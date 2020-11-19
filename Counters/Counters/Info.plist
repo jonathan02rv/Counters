@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SF-Pro-Display-Regular</string>
-		<string>SF-Pro-Display-Bold</string>
+		<string>SFProDisplay-Regular.ttf</string>
+		<string>SFProDisplay-Bold.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

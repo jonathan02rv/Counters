@@ -38,9 +38,9 @@
 		9A22B95E2566AFD90024E81A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B95D2566AFD80024E81A /* ColorPalette.swift */; };
 		9A22B9672566B33E0024E81A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9662566B33D0024E81A /* Utils.swift */; };
 		9A22B96C2566B4BF0024E81A /* FontsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B96B2566B4BF0024E81A /* FontsApp.swift */; };
-		9A22B9712566B8470024E81A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A22B9702566B8470024E81A /* SF-Pro-Display-Bold.otf */; };
-		9A22B9762566B87F0024E81A /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A22B9752566B87F0024E81A /* SF-Pro-Display-Regular.otf */; };
 		9A53FEA425671A98000E4346 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A53FEA325671A98000E4346 /* Extensions.swift */; };
+		9A53FEC2256728FA000E4346 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A53FEC1256728FA000E4346 /* SFProDisplay-Regular.ttf */; };
+		9A53FEC725672907000E4346 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A53FEC625672907000E4346 /* SFProDisplay-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,9 +97,9 @@
 		9A22B95D2566AFD80024E81A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		9A22B9662566B33D0024E81A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		9A22B96B2566B4BF0024E81A /* FontsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsApp.swift; sourceTree = "<group>"; };
-		9A22B9702566B8470024E81A /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
-		9A22B9752566B87F0024E81A /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		9A53FEA325671A98000E4346 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9A53FEC1256728FA000E4346 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		9A53FEC625672907000E4346 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,8 +430,8 @@
 		9A22B94E256638AF0024E81A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				9A22B9752566B87F0024E81A /* SF-Pro-Display-Regular.otf */,
-				9A22B9702566B8470024E81A /* SF-Pro-Display-Bold.otf */,
+				9A53FEC1256728FA000E4346 /* SFProDisplay-Regular.ttf */,
+				9A53FEC625672907000E4346 /* SFProDisplay-Bold.ttf */,
 				9A22B96B2566B4BF0024E81A /* FontsApp.swift */,
 			);
 			path = Fonts;
@@ -572,8 +572,8 @@
 			files = (
 				9A22B8962564FC320024E81A /* LaunchScreen.storyboard in Resources */,
 				9A22B8932564FC320024E81A /* Assets.xcassets in Resources */,
-				9A22B9712566B8470024E81A /* SF-Pro-Display-Bold.otf in Resources */,
-				9A22B9762566B87F0024E81A /* SF-Pro-Display-Regular.otf in Resources */,
+				9A53FEC2256728FA000E4346 /* SFProDisplay-Regular.ttf in Resources */,
+				9A53FEC725672907000E4346 /* SFProDisplay-Bold.ttf in Resources */,
 				9A22B88E2564FC2E0024E81A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
