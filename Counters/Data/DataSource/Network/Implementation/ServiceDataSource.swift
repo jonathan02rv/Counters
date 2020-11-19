@@ -22,9 +22,9 @@ class ServiceDataSource: ServiceDataSourceProtocol{
         self.sessionManager = Alamofire.SessionManager(configuration: configuration, serverTrustPolicyManager:  ServerTrustPolicyManager(policies: serverTrustPolicies))
     }
     
-    func getCounters(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity], Error>) -> Void) {
+    func getCountersAll(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity], Error>) -> Void) {
         if Reachability.isConnectedToNetwork(){
-            guard let requestRef = request as? CountersAllRequestObject else{return}
+            guard let requestRef = request as? AllCountersRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
             sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
@@ -53,7 +53,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
     
     func createCounter(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity], Error>) -> Void) {
         if Reachability.isConnectedToNetwork(){
-            guard let requestRef = request as? CounterCreateRequestObject else{return}
+            guard let requestRef = request as? CreateCounterRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
             sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
@@ -82,7 +82,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
     
     func deteleCounter(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity], Error>) -> Void) {
         if Reachability.isConnectedToNetwork(){
-            guard let requestRef = request as? CounterDeleteRequestObject else{return}
+            guard let requestRef = request as? DeleteCounterRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
             sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
@@ -111,7 +111,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
     
     func incrementCounter(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity], Error>) -> Void) {
         if Reachability.isConnectedToNetwork(){
-            guard let requestRef = request as? CounterIncrementRequestObject else{return}
+            guard let requestRef = request as? IncrementCounterRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
             sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
@@ -140,7 +140,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
     
     func decrementCounter(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity], Error>) -> Void) {
         if Reachability.isConnectedToNetwork(){
-            guard let requestRef = request as? CounterDecrementRequestObject else{return}
+            guard let requestRef = request as? DecrementCounterRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
             sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in

@@ -31,6 +31,10 @@
 		9A22B91C2565EA280024E81A /* ErrorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B91B2565EA280024E81A /* ErrorEntity.swift */; };
 		9A22B9262565EA710024E81A /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9252565EA710024E81A /* ErrorModel.swift */; };
 		9A22B92B2565ECA70024E81A /* BaseResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B92A2565ECA70024E81A /* BaseResponseEntity.swift */; };
+		9A22B9312565EF700024E81A /* CounterRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9302565EF700024E81A /* CounterRepositoryProtocol.swift */; };
+		9A22B9392565F08F0024E81A /* CounterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9382565F08F0024E81A /* CounterRepository.swift */; };
+		9A22B93F2565F4610024E81A /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B93E2565F4610024E81A /* Interactor.swift */; };
+		9A22B9452565F49E0024E81A /* CounterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9442565F49E0024E81A /* CounterInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,10 @@
 		9A22B91B2565EA280024E81A /* ErrorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEntity.swift; sourceTree = "<group>"; };
 		9A22B9252565EA710024E81A /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		9A22B92A2565ECA70024E81A /* BaseResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseEntity.swift; sourceTree = "<group>"; };
+		9A22B9302565EF700024E81A /* CounterRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterRepositoryProtocol.swift; sourceTree = "<group>"; };
+		9A22B9382565F08F0024E81A /* CounterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterRepository.swift; sourceTree = "<group>"; };
+		9A22B93E2565F4610024E81A /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		9A22B9442565F49E0024E81A /* CounterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +185,8 @@
 		9A22B8BD2565BED10024E81A /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				9A22B93D2565F42E0024E81A /* Interactor */,
+				9A22B92F2565EF490024E81A /* Repository */,
 				9A22B9072565CE3E0024E81A /* Model */,
 			);
 			path = Domain;
@@ -216,6 +226,7 @@
 		9A22B8C52565BFB20024E81A /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				9A22B9382565F08F0024E81A /* CounterRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -359,6 +370,31 @@
 			path = ErrorModel;
 			sourceTree = "<group>";
 		};
+		9A22B92F2565EF490024E81A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9302565EF700024E81A /* CounterRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		9A22B93D2565F42E0024E81A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B93E2565F4610024E81A /* Interactor.swift */,
+				9A22B9432565F4810024E81A /* Services */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9A22B9432565F4810024E81A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9442565F49E0024E81A /* CounterInteractor.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -500,6 +536,7 @@
 				9A22B8912564FC2E0024E81A /* Counters.xcdatamodeld in Sources */,
 				9A22B88B2564FC2E0024E81A /* ViewController.swift in Sources */,
 				9A22B91C2565EA280024E81A /* ErrorEntity.swift in Sources */,
+				9A22B9452565F49E0024E81A /* CounterInteractor.swift in Sources */,
 				9A22B8F02565C8390024E81A /* TimberjackHelper.swift in Sources */,
 				9A22B8FD2565CB470024E81A /* ServiceDataSourceProtocol.swift in Sources */,
 				9A22B8872564FC2E0024E81A /* AppDelegate.swift in Sources */,
@@ -507,11 +544,14 @@
 				9A22B8892564FC2E0024E81A /* SceneDelegate.swift in Sources */,
 				9A22B9032565CDBD0024E81A /* CounterEntity.swift in Sources */,
 				9A22B8F62565CADC0024E81A /* Rechability.swift in Sources */,
+				9A22B93F2565F4610024E81A /* Interactor.swift in Sources */,
+				9A22B9312565EF700024E81A /* CounterRepositoryProtocol.swift in Sources */,
 				9A22B90F2565E0570024E81A /* ServiceDataSource.swift in Sources */,
 				9A22B9162565E99F0024E81A /* ServiceErrorHandler.swift in Sources */,
 				9A22B8D92565C1AE0024E81A /* HeadersRequest.swift in Sources */,
 				9A22B8E82565C7420024E81A /* Configuration.swift in Sources */,
 				9A22B92B2565ECA70024E81A /* BaseResponseEntity.swift in Sources */,
+				9A22B9392565F08F0024E81A /* CounterRepository.swift in Sources */,
 				9A22B8D12565C19A0024E81A /* RequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

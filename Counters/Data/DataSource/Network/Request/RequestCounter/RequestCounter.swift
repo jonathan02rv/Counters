@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-internal struct CountersAllRequestObject: RequestObject{
+internal struct AllCountersRequestObject: RequestObject{
     var path: String = "/counters"
     let method: HTTPMethod = .get
     var headers: HTTPHeaders
@@ -20,7 +20,7 @@ internal struct CountersAllRequestObject: RequestObject{
     }
 }
 
-internal struct CounterCreateRequestObject: RequestObject{
+internal struct CreateCounterRequestObject: RequestObject{
     var path: String = "/counter"
     let method: HTTPMethod = .post
     var headers: HTTPHeaders
@@ -33,7 +33,7 @@ internal struct CounterCreateRequestObject: RequestObject{
     }
 }
 
-internal struct CounterDeleteRequestObject: RequestObject{
+internal struct DeleteCounterRequestObject: RequestObject{
     var path: String = "/counter"
     let method: HTTPMethod = .delete
     var headers: HTTPHeaders
@@ -46,7 +46,7 @@ internal struct CounterDeleteRequestObject: RequestObject{
     }
 }
 
-internal struct CounterIncrementRequestObject: RequestObject{
+internal struct IncrementCounterRequestObject: RequestObject{
     var path: String = "/counter/inc"
     let method: HTTPMethod = .post
     var headers: HTTPHeaders
@@ -59,7 +59,7 @@ internal struct CounterIncrementRequestObject: RequestObject{
     }
 }
 
-internal struct CounterDecrementRequestObject: RequestObject{
+internal struct DecrementCounterRequestObject: RequestObject{
     var path: String = "/counter/dec"
     let method: HTTPMethod = .post
     var headers: HTTPHeaders

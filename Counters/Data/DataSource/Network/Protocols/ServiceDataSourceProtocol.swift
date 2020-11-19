@@ -9,7 +9,7 @@ import Foundation
 
 internal protocol ServiceDataSourceProtocol{
     
-    func getCounters(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity],Error>)->Void)
+    func getCountersAll(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity],Error>)->Void)
     
     func createCounter(request: RequestObject, completion: @escaping (Swift.Result<[CounterEntity],Error>)->Void)
     
