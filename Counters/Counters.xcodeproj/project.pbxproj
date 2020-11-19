@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,21 @@
 		9A22B8962564FC320024E81A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A22B8942564FC320024E81A /* LaunchScreen.storyboard */; };
 		9A22B8A12564FC330024E81A /* CountersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8A02564FC330024E81A /* CountersTests.swift */; };
 		9A22B8AC2564FC330024E81A /* CountersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8AB2564FC330024E81A /* CountersUITests.swift */; };
+		9A22B8CB2565C0E80024E81A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A22B8CA2565C0E80024E81A /* Alamofire */; };
+		9A22B8D12565C19A0024E81A /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8D02565C19A0024E81A /* RequestProtocol.swift */; };
+		9A22B8D92565C1AE0024E81A /* HeadersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8D82565C1AE0024E81A /* HeadersRequest.swift */; };
+		9A22B8E22565C2E80024E81A /* RequestCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8E12565C2E80024E81A /* RequestCounter.swift */; };
+		9A22B8E82565C7420024E81A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8E72565C7420024E81A /* Configuration.swift */; };
+		9A22B8F02565C8390024E81A /* TimberjackHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8EF2565C8390024E81A /* TimberjackHelper.swift */; };
+		9A22B8F62565CADC0024E81A /* Rechability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8F52565CADC0024E81A /* Rechability.swift */; };
+		9A22B8FD2565CB470024E81A /* ServiceDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B8FC2565CB470024E81A /* ServiceDataSourceProtocol.swift */; };
+		9A22B9032565CDBD0024E81A /* CounterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9022565CDBD0024E81A /* CounterEntity.swift */; };
+		9A22B90A2565CE590024E81A /* CounterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9092565CE590024E81A /* CounterModel.swift */; };
+		9A22B90F2565E0570024E81A /* ServiceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B90E2565E0560024E81A /* ServiceDataSource.swift */; };
+		9A22B9162565E99F0024E81A /* ServiceErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9152565E99F0024E81A /* ServiceErrorHandler.swift */; };
+		9A22B91C2565EA280024E81A /* ErrorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B91B2565EA280024E81A /* ErrorEntity.swift */; };
+		9A22B9262565EA710024E81A /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9252565EA710024E81A /* ErrorModel.swift */; };
+		9A22B92B2565ECA70024E81A /* BaseResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B92A2565ECA70024E81A /* BaseResponseEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +66,20 @@
 		9A22B8A72564FC330024E81A /* CountersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A22B8AB2564FC330024E81A /* CountersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountersUITests.swift; sourceTree = "<group>"; };
 		9A22B8AD2564FC330024E81A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A22B8D02565C19A0024E81A /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		9A22B8D82565C1AE0024E81A /* HeadersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadersRequest.swift; sourceTree = "<group>"; };
+		9A22B8E12565C2E80024E81A /* RequestCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCounter.swift; sourceTree = "<group>"; };
+		9A22B8E72565C7420024E81A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		9A22B8EF2565C8390024E81A /* TimberjackHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimberjackHelper.swift; sourceTree = "<group>"; };
+		9A22B8F52565CADC0024E81A /* Rechability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rechability.swift; sourceTree = "<group>"; };
+		9A22B8FC2565CB470024E81A /* ServiceDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataSourceProtocol.swift; sourceTree = "<group>"; };
+		9A22B9022565CDBD0024E81A /* CounterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEntity.swift; sourceTree = "<group>"; };
+		9A22B9092565CE590024E81A /* CounterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterModel.swift; sourceTree = "<group>"; };
+		9A22B90E2565E0560024E81A /* ServiceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataSource.swift; sourceTree = "<group>"; };
+		9A22B9152565E99F0024E81A /* ServiceErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceErrorHandler.swift; sourceTree = "<group>"; };
+		9A22B91B2565EA280024E81A /* ErrorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEntity.swift; sourceTree = "<group>"; };
+		9A22B9252565EA710024E81A /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		9A22B92A2565ECA70024E81A /* BaseResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A22B8CB2565C0E80024E81A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				9A22B8852564FC2E0024E81A /* Counters */,
+				9A22B8BD2565BED10024E81A /* Domain */,
+				9A22B8BC2565BECB0024E81A /* Data */,
 				9A22B89F2564FC330024E81A /* CountersTests */,
 				9A22B8AA2564FC330024E81A /* CountersUITests */,
 				9A22B8842564FC2E0024E81A /* Products */,
@@ -101,6 +133,7 @@
 		9A22B8852564FC2E0024E81A /* Counters */ = {
 			isa = PBXGroup;
 			children = (
+				9A22B8BE2565BEFA0024E81A /* Presentation */,
 				9A22B8862564FC2E0024E81A /* AppDelegate.swift */,
 				9A22B8882564FC2E0024E81A /* SceneDelegate.swift */,
 				9A22B88A2564FC2E0024E81A /* ViewController.swift */,
@@ -131,6 +164,201 @@
 			path = CountersUITests;
 			sourceTree = "<group>";
 		};
+		9A22B8BC2565BECB0024E81A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B8C72565BFC80024E81A /* Entity */,
+				9A22B8C62565BFC10024E81A /* DataSource */,
+				9A22B8C52565BFB20024E81A /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9A22B8BD2565BED10024E81A /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9072565CE3E0024E81A /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		9A22B8BE2565BEFA0024E81A /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B8C12565BF170024E81A /* ExampleCounter */,
+				9A22B8C02565BF0C0024E81A /* CreateCounter */,
+				9A22B8BF2565BF050024E81A /* HomeCounter */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9A22B8BF2565BF050024E81A /* HomeCounter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomeCounter;
+			sourceTree = "<group>";
+		};
+		9A22B8C02565BF0C0024E81A /* CreateCounter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CreateCounter;
+			sourceTree = "<group>";
+		};
+		9A22B8C12565BF170024E81A /* ExampleCounter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExampleCounter;
+			sourceTree = "<group>";
+		};
+		9A22B8C52565BFB20024E81A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		9A22B8C62565BFC10024E81A /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B8C82565BFF70024E81A /* Network */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		9A22B8C72565BFC80024E81A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B91A2565EA160024E81A /* ErrorEntity */,
+				9A22B9012565CDA10024E81A /* CounterEntity */,
+				9A22B92A2565ECA70024E81A /* BaseResponseEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		9A22B8C82565BFF70024E81A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9132565E96E0024E81A /* Responses */,
+				9A22B8FB2565CB200024E81A /* Protocols */,
+				9A22B8FA2565CB0F0024E81A /* Implementation */,
+				9A22B8F42565CABA0024E81A /* Rechability */,
+				9A22B8E62565C72A0024E81A /* Setup */,
+				9A22B8CF2565C1780024E81A /* Request */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9A22B8CF2565C1780024E81A /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B8E02565C2620024E81A /* RequestCounter */,
+				9A22B8D02565C19A0024E81A /* RequestProtocol.swift */,
+				9A22B8D82565C1AE0024E81A /* HeadersRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		9A22B8E02565C2620024E81A /* RequestCounter */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B8E12565C2E80024E81A /* RequestCounter.swift */,
+			);
+			path = RequestCounter;
+			sourceTree = "<group>";
+		};
+		9A22B8E62565C72A0024E81A /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B8E72565C7420024E81A /* Configuration.swift */,
+				9A22B8EF2565C8390024E81A /* TimberjackHelper.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		9A22B8F42565CABA0024E81A /* Rechability */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B8F52565CADC0024E81A /* Rechability.swift */,
+			);
+			path = Rechability;
+			sourceTree = "<group>";
+		};
+		9A22B8FA2565CB0F0024E81A /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B90E2565E0560024E81A /* ServiceDataSource.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		9A22B8FB2565CB200024E81A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B8FC2565CB470024E81A /* ServiceDataSourceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9A22B9012565CDA10024E81A /* CounterEntity */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9022565CDBD0024E81A /* CounterEntity.swift */,
+			);
+			path = CounterEntity;
+			sourceTree = "<group>";
+		};
+		9A22B9072565CE3E0024E81A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9232565EA450024E81A /* ErrorModel */,
+				9A22B9082565CE440024E81A /* CounterModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9A22B9082565CE440024E81A /* CounterModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9092565CE590024E81A /* CounterModel.swift */,
+			);
+			path = CounterModel;
+			sourceTree = "<group>";
+		};
+		9A22B9132565E96E0024E81A /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9142565E9780024E81A /* Error */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		9A22B9142565E9780024E81A /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9152565E99F0024E81A /* ServiceErrorHandler.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		9A22B91A2565EA160024E81A /* ErrorEntity */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B91B2565EA280024E81A /* ErrorEntity.swift */,
+			);
+			path = ErrorEntity;
+			sourceTree = "<group>";
+		};
+		9A22B9232565EA450024E81A /* ErrorModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A22B9252565EA710024E81A /* ErrorModel.swift */,
+			);
+			path = ErrorModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,6 +375,9 @@
 			dependencies = (
 			);
 			name = Counters;
+			packageProductDependencies = (
+				9A22B8CA2565C0E80024E81A /* Alamofire */,
+			);
 			productName = Counters;
 			productReference = 9A22B8832564FC2E0024E81A /* Counters.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +449,9 @@
 				Base,
 			);
 			mainGroup = 9A22B87A2564FC2E0024E81A;
+			packageReferences = (
+				9A22B8C92565C0E80024E81A /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 9A22B8842564FC2E0024E81A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -261,10 +495,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A22B9262565EA710024E81A /* ErrorModel.swift in Sources */,
+				9A22B8E22565C2E80024E81A /* RequestCounter.swift in Sources */,
 				9A22B8912564FC2E0024E81A /* Counters.xcdatamodeld in Sources */,
 				9A22B88B2564FC2E0024E81A /* ViewController.swift in Sources */,
+				9A22B91C2565EA280024E81A /* ErrorEntity.swift in Sources */,
+				9A22B8F02565C8390024E81A /* TimberjackHelper.swift in Sources */,
+				9A22B8FD2565CB470024E81A /* ServiceDataSourceProtocol.swift in Sources */,
 				9A22B8872564FC2E0024E81A /* AppDelegate.swift in Sources */,
+				9A22B90A2565CE590024E81A /* CounterModel.swift in Sources */,
 				9A22B8892564FC2E0024E81A /* SceneDelegate.swift in Sources */,
+				9A22B9032565CDBD0024E81A /* CounterEntity.swift in Sources */,
+				9A22B8F62565CADC0024E81A /* Rechability.swift in Sources */,
+				9A22B90F2565E0570024E81A /* ServiceDataSource.swift in Sources */,
+				9A22B9162565E99F0024E81A /* ServiceErrorHandler.swift in Sources */,
+				9A22B8D92565C1AE0024E81A /* HeadersRequest.swift in Sources */,
+				9A22B8E82565C7420024E81A /* Configuration.swift in Sources */,
+				9A22B92B2565ECA70024E81A /* BaseResponseEntity.swift in Sources */,
+				9A22B8D12565C19A0024E81A /* RequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +845,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9A22B8C92565C0E80024E81A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = exactVersion;
+				version = 4.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9A22B8CA2565C0E80024E81A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A22B8C92565C0E80024E81A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9A22B88F2564FC2E0024E81A /* Counters.xcdatamodeld */ = {
