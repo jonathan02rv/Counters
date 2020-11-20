@@ -49,6 +49,11 @@
 		9A89A3B725675E4E00B7A05D /* WelcomeCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */; };
 		9A89A3BC25675FF800B7A05D /* ViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3BB25675FF800B7A05D /* ViewData.swift */; };
 		9A89A3C2256760C900B7A05D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3C1256760C900B7A05D /* Protocols.swift */; };
+		9AB932A325677BCE0080FB6F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB932A225677BCE0080FB6F /* Home.storyboard */; };
+		9AB932BF25677D370080FB6F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB932BE25677D370080FB6F /* HomeViewController.swift */; };
+		9AB932C425677D520080FB6F /* HomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB932C325677D520080FB6F /* HomeViewPresenter.swift */; };
+		9AB932C925677D640080FB6F /* HomeViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB932C825677D640080FB6F /* HomeViewRouter.swift */; };
+		9AB932CF256787720080FB6F /* HomeViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB932CE256787720080FB6F /* HomeViewConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +121,11 @@
 		9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCounterController.swift; sourceTree = "<group>"; };
 		9A89A3BB25675FF800B7A05D /* ViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewData.swift; sourceTree = "<group>"; };
 		9A89A3C1256760C900B7A05D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		9AB932A225677BCE0080FB6F /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		9AB932BE25677D370080FB6F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9AB932C325677D520080FB6F /* HomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPresenter.swift; sourceTree = "<group>"; };
+		9AB932C825677D640080FB6F /* HomeViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewRouter.swift; sourceTree = "<group>"; };
+		9AB932CE256787720080FB6F /* HomeViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				9A22B8BF2565BF050024E81A /* WelcomeCounter */,
+				9AB9329E25677B780080FB6F /* HomeCounter */,
 				9A22B8C02565BF0C0024E81A /* CreateCounter */,
 				9A22B8C12565BF170024E81A /* ExampleCounter */,
 				9A22B949256610040024E81A /* Views */,
@@ -431,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				9A22B88C2564FC2E0024E81A /* Main.storyboard */,
+				9AB932A225677BCE0080FB6F /* Home.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -573,6 +585,57 @@
 			path = ViewData;
 			sourceTree = "<group>";
 		};
+		9AB9329E25677B780080FB6F /* HomeCounter */ = {
+			isa = PBXGroup;
+			children = (
+				9AB932A125677B920080FB6F /* Router */,
+				9AB932A025677B8B0080FB6F /* Presenter */,
+				9AB9329F25677B860080FB6F /* View */,
+			);
+			path = HomeCounter;
+			sourceTree = "<group>";
+		};
+		9AB9329F25677B860080FB6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9AB932CD256787580080FB6F /* Configurator */,
+				9AB932A725677CA60080FB6F /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9AB932A025677B8B0080FB6F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9AB932C325677D520080FB6F /* HomeViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9AB932A125677B920080FB6F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9AB932C825677D640080FB6F /* HomeViewRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9AB932A725677CA60080FB6F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9AB932BE25677D370080FB6F /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9AB932CD256787580080FB6F /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				9AB932CE256787720080FB6F /* HomeViewConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -682,6 +745,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB932A325677BCE0080FB6F /* Home.storyboard in Resources */,
 				9A22B8962564FC320024E81A /* LaunchScreen.storyboard in Resources */,
 				9A22B8932564FC320024E81A /* Assets.xcassets in Resources */,
 				9A53FEC2256728FA000E4346 /* SFProDisplay-Regular.ttf in Resources */,
@@ -713,8 +777,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A22B9262565EA710024E81A /* ErrorModel.swift in Sources */,
+				9AB932CF256787720080FB6F /* HomeViewConfigurator.swift in Sources */,
 				9A22B8E22565C2E80024E81A /* RequestCounter.swift in Sources */,
 				9A22B8912564FC2E0024E81A /* Counters.xcdatamodeld in Sources */,
+				9AB932BF25677D370080FB6F /* HomeViewController.swift in Sources */,
 				9A22B91C2565EA280024E81A /* ErrorEntity.swift in Sources */,
 				9A22B9452565F49E0024E81A /* CounterInteractor.swift in Sources */,
 				9A22B96C2566B4BF0024E81A /* FontsApp.swift in Sources */,
@@ -740,8 +806,10 @@
 				9A53FEF025674C52000E4346 /* WelcomeCounterPresenter.swift in Sources */,
 				9A22B9392565F08F0024E81A /* CounterRepository.swift in Sources */,
 				9A89A3AB25675C7C00B7A05D /* WelcomeTableViewCell.swift in Sources */,
+				9AB932C425677D520080FB6F /* HomeViewPresenter.swift in Sources */,
 				9A22B8D12565C19A0024E81A /* RequestProtocol.swift in Sources */,
 				9A89A3B725675E4E00B7A05D /* WelcomeCounterController.swift in Sources */,
+				9AB932C925677D640080FB6F /* HomeViewRouter.swift in Sources */,
 				9A22B95E2566AFD90024E81A /* ColorPalette.swift in Sources */,
 				9A22B9672566B33E0024E81A /* Utils.swift in Sources */,
 				9A89A3BC25675FF800B7A05D /* ViewData.swift in Sources */,

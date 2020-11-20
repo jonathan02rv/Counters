@@ -15,6 +15,7 @@ protocol WelcomeCounterRouterProtocol{
 
 class WelcomeCounterRouter{
     weak var currentView: WelcomeCounterController?
+    let storyboard = UIStoryboard(name: "Home", bundle: nil)
     init(withView viewController: WelcomeCounterController) {
         self.currentView = viewController
     }
@@ -24,7 +25,6 @@ class WelcomeCounterRouter{
 extension WelcomeCounterRouter: WelcomeCounterRouterProtocol{
     
     func routeToHome() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
         guard let view = currentView, let homeScreen = storyboard.instantiateInitialViewController()
         else { return }
         guard let keyWindow = UIWindow.key else{return}

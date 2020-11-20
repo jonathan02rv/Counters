@@ -47,7 +47,7 @@ class WelcomeCounterController: UIViewController {
     }
     
     @IBAction func btnGoToHome(_ sender: UIButton) {
-        
+        presenter.goToHome()
     }
     
     func setupTableView(){
