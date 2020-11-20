@@ -13,8 +13,9 @@ protocol HomeViewConfiguratorProtocol{
 
 class HomeViewConfigurator: HomeViewConfiguratorProtocol{
     func configure(controller: HomeViewController) {
+        let interactorCounter = CounterInteractor(repository: CounterRepository())
         let router = HomeViewRouter(controller: controller)
-        controller.presenter = HomeViewPresenter(view: controller, router: router)
+        controller.presenter = HomeViewPresenter(view: controller, router: router, interactorCounter: interactorCounter)
     }
     
     

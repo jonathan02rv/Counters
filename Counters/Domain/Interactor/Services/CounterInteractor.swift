@@ -15,7 +15,7 @@ public protocol CounterInteractorProtocol{
     func decrementCounter(counterId:String, completion: @escaping (Result<[CounterModel], Error>) -> Void)
 }
 
-public class ArticlesInteractor:Interactor, CounterInteractorProtocol{
+public class CounterInteractor:Interactor, CounterInteractorProtocol{
 
     public func getCountersAll(completion: @escaping (Result<[CounterModel], Error>) -> Void) {
         return(self.repository as! CounterRepositoryProtocol).getCountersAll { (result) in
