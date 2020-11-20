@@ -7,7 +7,17 @@
 
 import Foundation
 
-enum FontsApp:String{
-    case SFPProDisplayRegular = "SF-Pro-Display-Regular"
-    case SFPProDisplayBold = "SF-Pro-Display-Bold"
+enum FontsApp{
+    case regular
+    case bold
+    
+    func getFontName()->String{
+        switch self {
+        case .regular:
+            return "SFProDisplay-Regular"
+        case .bold:
+            return "SFProDisplay-Bold"
+        }
+    }
+
 }

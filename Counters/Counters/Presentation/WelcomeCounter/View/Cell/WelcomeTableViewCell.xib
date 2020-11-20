@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProDisplay-Regular.ttf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WelcomeTableViewCell" rowHeight="108" id="KGk-i7-Jjw" customClass="WelcomeTableViewCell" customModule="Counters" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="380" height="108"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THy-nz-Nbf">
+                        <rect key="frame" x="39" y="0.0" width="302" height="108"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconRedRectangle" translatesAutoresizingMaskIntoConstraints="NO" id="h8K-lb-xQe">
+                                <rect key="frame" x="0.0" y="10" width="49" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="Yfn-Tf-wkb"/>
+                                    <constraint firstAttribute="width" constant="49" id="dDb-JK-2xo"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconNumber" translatesAutoresizingMaskIntoConstraints="NO" id="Mtq-hr-BIB">
+                                <rect key="frame" x="11" y="21.5" width="27" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="4Xd-Y0-PUb"/>
+                                    <constraint firstAttribute="width" constant="27" id="sNl-hi-p2K"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="o7T-th-wls">
+                                <rect key="frame" x="64" y="10" width="238" height="88.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Add almost anything" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agN-cF-87g">
+                                        <rect key="frame" x="0.0" y="0.0" width="238" height="22"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                        <color key="textColor" name="primaryBlackColorApp"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Capture cups of lattes, frapuccinos, or anything else that can be counted." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6O0-MO-Kr4">
+                                        <rect key="frame" x="0.0" y="29" width="238" height="59.5"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                        <color key="textColor" name="secundaryBlackColorApp"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="o7T-th-wls" firstAttribute="leading" secondItem="h8K-lb-xQe" secondAttribute="trailing" constant="15" id="1ir-yi-HbS"/>
+                            <constraint firstItem="Mtq-hr-BIB" firstAttribute="centerX" secondItem="h8K-lb-xQe" secondAttribute="centerX" id="KHu-Lz-yJd"/>
+                            <constraint firstItem="Mtq-hr-BIB" firstAttribute="centerY" secondItem="h8K-lb-xQe" secondAttribute="centerY" id="cYR-y2-3UL"/>
+                            <constraint firstItem="o7T-th-wls" firstAttribute="top" secondItem="THy-nz-Nbf" secondAttribute="top" constant="10" id="ceI-uC-F82"/>
+                            <constraint firstItem="h8K-lb-xQe" firstAttribute="leading" secondItem="THy-nz-Nbf" secondAttribute="leading" id="fkd-Zi-YkD"/>
+                            <constraint firstAttribute="bottom" secondItem="o7T-th-wls" secondAttribute="bottom" constant="9.5" id="hAr-TL-MeD"/>
+                            <constraint firstAttribute="trailing" secondItem="o7T-th-wls" secondAttribute="trailing" id="jtO-BH-W6C"/>
+                            <constraint firstItem="h8K-lb-xQe" firstAttribute="top" secondItem="THy-nz-Nbf" secondAttribute="top" constant="10" id="s6J-ba-8GE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="THy-nz-Nbf" secondAttribute="bottom" id="COa-FP-fh0"/>
+                    <constraint firstItem="THy-nz-Nbf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ef0-Hd-r2P"/>
+                    <constraint firstItem="THy-nz-Nbf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="IEt-WZ-15e"/>
+                    <constraint firstAttribute="trailing" secondItem="THy-nz-Nbf" secondAttribute="trailing" constant="39" id="fqe-fF-Z6o"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgInclude" destination="Mtq-hr-BIB" id="jQW-l1-AgF"/>
+                <outlet property="imgRectangle" destination="h8K-lb-xQe" id="SLs-oZ-D9X"/>
+                <outlet property="lblDescription" destination="6O0-MO-Kr4" id="MEe-cY-c3i"/>
+                <outlet property="lblTitle" destination="agN-cF-87g" id="E0G-UW-Zh3"/>
+            </connections>
+            <point key="canvasLocation" x="181.15942028985509" y="117.1875"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="iconNumber" width="23" height="22.5"/>
+        <image name="iconRedRectangle" width="49" height="49"/>
+        <namedColor name="primaryBlackColorApp">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secundaryBlackColorApp">
+            <color red="0.16899999976158142" green="0.16899999976158142" blue="0.16899999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
