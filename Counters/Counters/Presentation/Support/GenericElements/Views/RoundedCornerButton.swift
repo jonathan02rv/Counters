@@ -24,11 +24,11 @@ class RoundedCornerButton: UIButton{
      
         DispatchQueue.main.async(execute: {
             self.setTitleColor(UIColor(named: ColorsApp.primaryWhiteColorApp.rawValue), for: .normal)
-            self.titleLabel?.font = UIFont(name: FontsApp.regular.getFontName(), size: FontSizeApp.s17.rawValue)
+            self.titleLabel?.font = UIFont(name: FontsApp.bold.getFontName(), size: FontSizeApp.s17.rawValue)
             self.backgroundColor = UIColor(named: ColorsApp.primaryOrangeColorApp.rawValue)
             self.layer.shadowColor = UIColor.clear.cgColor
             self.setTitleShadowColor(.clear, for: .normal)
-            self.layer.cornerRadius = 20
+            self.layer.cornerRadius = 10
         })
     }
 }
