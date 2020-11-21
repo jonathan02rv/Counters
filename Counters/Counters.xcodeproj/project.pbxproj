@@ -45,6 +45,7 @@
 		9A53FF0025674D8A000E4346 /* WelcomeCounterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A53FEFF25674D8A000E4346 /* WelcomeCounterConfigurator.swift */; };
 		9A5D102625677013006A4E1A /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D102525677013006A4E1A /* RoundedCornerButton.swift */; };
 		9A60D96325695EA900C9272C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D96225695EA900C9272C /* Constants.swift */; };
+		9A60D97F256992FB00C9272C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A60D97E256992FB00C9272C /* Localizable.strings */; };
 		9A89A3AB25675C7C00B7A05D /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3A925675C7C00B7A05D /* WelcomeTableViewCell.swift */; };
 		9A89A3AC25675C7C00B7A05D /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A89A3AA25675C7C00B7A05D /* WelcomeTableViewCell.xib */; };
 		9A89A3B725675E4E00B7A05D /* WelcomeCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */; };
@@ -121,6 +122,7 @@
 		9A53FEFF25674D8A000E4346 /* WelcomeCounterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCounterConfigurator.swift; sourceTree = "<group>"; };
 		9A5D102525677013006A4E1A /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
 		9A60D96225695EA900C9272C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9A60D97E256992FB00C9272C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		9A89A3A925675C7C00B7A05D /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		9A89A3AA25675C7C00B7A05D /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCounterController.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 		9A22B94D256638A20024E81A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9A60D97D256992DF00C9272C /* Localizable */,
 				9A22B95C2566AFA90024E81A /* Colors */,
 				9A22B94E256638AF0024E81A /* Fonts */,
 			);
@@ -559,6 +562,14 @@
 				9A5D102525677013006A4E1A /* RoundedCornerButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9A60D97D256992DF00C9272C /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				9A60D97E256992FB00C9272C /* Localizable.strings */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 		9A89A3A725675C4900B7A05D /* Controller */ = {
@@ -769,6 +780,7 @@
 				9A22B8962564FC320024E81A /* LaunchScreen.storyboard in Resources */,
 				9A22B8932564FC320024E81A /* Assets.xcassets in Resources */,
 				9A53FEC2256728FA000E4346 /* SFProDisplay-Regular.ttf in Resources */,
+				9A60D97F256992FB00C9272C /* Localizable.strings in Resources */,
 				9AA5D9082568DAFE00A6D067 /* CounterTableViewCell.xib in Resources */,
 				9A53FEC725672907000E4346 /* SFProDisplay-Bold.ttf in Resources */,
 				9A89A3AC25675C7C00B7A05D /* WelcomeTableViewCell.xib in Resources */,

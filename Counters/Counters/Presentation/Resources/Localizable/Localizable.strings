@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Counters
+
+  Created by Jhonatahan on 11/21/20.
+  
+*/
+
+"createErrorAlertTitle" = "Couldn’t create the counter";
+"incrementErrorAlertTitle" = "Couldn’t update the “Apples eaten” counter to ";
+"deleteErrorAlertTitle" = "Couldn’t delete the counter ";
+
+"offLineMessage" = "the Internet connection appears to be offline.";
+"dismissTitle" = "Dismiss";
+"retry" = "Retry";

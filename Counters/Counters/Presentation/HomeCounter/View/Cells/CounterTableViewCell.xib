@@ -27,14 +27,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-aK-An5">
-                                <rect key="frame" x="59" y="0.0" width="5" height="100"/>
+                                <rect key="frame" x="59" y="0.0" width="2" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="5" id="92K-S0-u65"/>
+                                    <constraint firstAttribute="width" constant="2" id="92K-S0-u65"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQl-R9-I5H">
-                                <rect key="frame" x="74" y="16" width="49" height="21"/>
+                                <rect key="frame" x="71" y="16" width="49" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,6 +42,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="DEl-Fy-3Gt">
                                 <rect key="frame" x="212" y="54" width="94" height="32"/>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <connections>
+                                    <action selector="stepper:" destination="KGk-i7-Jjw" eventType="valueChanged" id="6jW-B9-a0O"/>
+                                </connections>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
@@ -72,7 +75,9 @@
             <connections>
                 <outlet property="lblCount" destination="dGT-H2-Y47" id="QMG-aw-P6c"/>
                 <outlet property="lblTitle" destination="oQl-R9-I5H" id="Ayu-yo-FTC"/>
+                <outlet property="stpCounter" destination="DEl-Fy-3Gt" id="MeR-nc-oxW"/>
                 <outlet property="viewCell" destination="6On-66-WkR" id="qRg-mL-3K4"/>
+                <outlet property="viewSeparator" destination="I1K-aK-An5" id="QIA-0M-PUb"/>
             </connections>
             <point key="canvasLocation" x="-22" y="14"/>
         </tableViewCell>

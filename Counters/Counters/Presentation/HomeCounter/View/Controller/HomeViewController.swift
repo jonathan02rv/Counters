@@ -41,6 +41,8 @@ class HomeViewController: UITableViewController {
         let nib = UINib(nibName: tableViewCellName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: tableViewCellIdentifier)
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.backgroundColor = .primaryGraceColorApp
     }
     
     private func setupSearchView(){
@@ -52,6 +54,8 @@ class HomeViewController: UITableViewController {
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.tintColor = .primaryOrangeColorApp
+        navigationController?.navigationBar.tintColor = .primaryOrangeColorApp
     }
 }
 
@@ -62,7 +66,8 @@ extension HomeViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! CounterTableViewCell
-        
+        cell.presenter = self.presenter
+        cell.row = indexPath.row
         let itemCounter = presenter.getItemData(row: indexPath.row)
         cell.count = itemCounter.count
         cell.title = itemCounter.title
@@ -70,6 +75,9 @@ extension HomeViewController{
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("TAP")
+    }
     
 }
 
