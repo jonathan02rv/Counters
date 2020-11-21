@@ -25,13 +25,24 @@ class WelcomeCounterRouter{
 extension WelcomeCounterRouter: WelcomeCounterRouterProtocol{
     
     func routeToHome() {
-        guard let view = currentView, let homeScreen = storyboard.instantiateInitialViewController()
-        else { return }
-        guard let keyWindow = UIWindow.key else{return}
+        guard let homeView = storyboard.instantiateViewController(withIdentifier: "homeViewController") as? HomeViewController,
+              let view = currentView,
+              let keyWindow = UIWindow.key else { return }
+        
         view.removeFromParent()
-        homeScreen.modalPresentationStyle = .fullScreen
-        keyWindow.rootViewController = homeScreen
+        
+        let navController = UINavigationController(rootViewController: homeView)
+        navController.navigationBar.prefersLargeTitles = true
+        
+        homeView.navigationItem.title = "Counters"
+        navController.tabBarItem.title = "Corner Shop"
+        
+        let tabController = UITabBarController()
+        tabController.viewControllers = [navController]
+        
+        keyWindow.rootViewController = tabController
     }
     
+
     
 }

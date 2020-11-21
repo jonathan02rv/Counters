@@ -9,6 +9,13 @@ import Foundation
 
 protocol HomeViewPresenterProtocol{
     func loadData()
+    func getNumberOfRowData()->Int
+    func getItemData(row:Int)->CounterModel
+    func getNumberOfRowDataFilter()->Int
+    func getItemFilterData(row:Int)->CounterModel
+    func getDataArray()->[CounterModel]
+    func setDataFilter(data: [CounterModel])
+    func fillSearchData(searchText: String)
 }
 
 class HomeViewPresenter{
@@ -17,6 +24,7 @@ class HomeViewPresenter{
     private var router: HomeViewRouterProtocol!
     
     var homeData = [CounterModel]()
+    var filterData = [CounterModel]()
     
     init(view: HomeViewControllerProtocol?, router: HomeViewRouterProtocol, interactorCounter: CounterInteractorProtocol) {
         self.view = view
@@ -26,6 +34,46 @@ class HomeViewPresenter{
 }
 
 extension HomeViewPresenter: HomeViewPresenterProtocol{
+    
+    func clearSearchData(){
+        filterData = [CounterModel]()
+        view?.reloadDataFilter()
+    }
+    
+    func fillSearchData(searchText: String){
+        guard searchText.count > 0 else{
+            clearSearchData()
+            return
+        }
+        filterData = [CounterModel]()
+        filterData = homeData.filter({$0.title.lowercased().contains(searchText.lowercased())})
+        view?.reloadDataFilter()
+    }
+    
+    func setDataFilter(data: [CounterModel]){
+        filterData = data
+    }
+    
+    func getDataArray()->[CounterModel]{
+        return homeData
+    }
+    
+    func getNumberOfRowData()->Int {
+        return homeData.count
+    }
+    
+    func getItemData(row:Int)->CounterModel {
+        return homeData[row]
+    }
+    
+    func getNumberOfRowDataFilter()->Int {
+        return filterData.count
+    }
+    
+    func getItemFilterData(row:Int)->CounterModel {
+        return filterData[row]
+    }
+    
     
     func loadData() {
         getListCounters()
@@ -40,6 +88,7 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
             switch result{
             case .success(let data):
                 sweak.homeData = data
+                sweak.view?.reloadData()
                 break
             case .failure(let error):
                 print("\(error)")

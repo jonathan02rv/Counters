@@ -21,7 +21,6 @@ class RoundedCornerButton: UIButton{
     }
     
     private func setPrimaryFilled() {
-     
         DispatchQueue.main.async(execute: {
             self.setTitleColor(UIColor(named: ColorsApp.primaryWhiteColorApp.rawValue), for: .normal)
             self.titleLabel?.font = UIFont(name: FontsApp.bold.getFontName(), size: FontSizeApp.s17.rawValue)
