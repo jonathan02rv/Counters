@@ -8,6 +8,7 @@
 import UIKit
 
 enum FontSizeApp: CGFloat {
+    case s15 = 15.0
     case s17 = 17.0
     case s24 = 24.0
     case s33 = 33.0
@@ -19,8 +20,6 @@ extension UILabel{
         self.textColor = UIColor(named: color.rawValue)
     }
 }
-
-
 
 enum TypErrorCounter{
     case create
@@ -63,7 +62,7 @@ extension UIViewController{
     func showCounterAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String), action: ((UIAlertAction) -> Void)?){
         let dismissTtitle:String = NSLocalizedString("dismissTitle", comment: "dismissTitle")
         let alert = UIAlertController(title: "\(typeAlert.getTitleAlert())\(messageData.strAppend)", message: messageData.message, preferredStyle: .alert)
-        
+        alert.view.tintColor = .primaryOrangeColorApp
         switch typeAlert {
         case .increment,.decrement:
             let retryTitle:String = NSLocalizedString("retry", comment: "retry")
@@ -111,6 +110,7 @@ extension UIColor{
     static var secundaryBlackColorApp:UIColor? {return UIColor(named: ColorsApp.secundaryBlackColorApp.rawValue)}
     static var secundaryGraceColorApp:UIColor? {return UIColor(named: ColorsApp.secundaryGraceColorApp.rawValue)}
     static var thirdBlackColorApp:UIColor? {return UIColor(named: ColorsApp.thirdBlackColorApp.rawValue)}
+    static var thirdGraceColorApp:UIColor? {return UIColor(named: ColorsApp.thirdGraceColorApp.rawValue)}
 }
 
 extension UIWindow {

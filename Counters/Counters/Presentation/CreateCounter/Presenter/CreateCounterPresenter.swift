@@ -34,10 +34,20 @@ extension CreateCounterPresenter:CreateCounterPresenterProtocol{
             switch result{
             case .success(let data):
                 print(data)
+                sweak.view?.clearInputText()
                 break
             case .failure(let error):
-                print(error)
-                break
+                
+                guard let errorModel =  error as? ErrorModel else {
+                    print("ERROR: \(error.localizedDescription)")
+                    return
+                }
+                switch errorModel.type {
+                case .networkError,.custom,.unknownError,.parseModel:
+                    sweak.view?.showAlert(typeAlert: .create, messageData: (message: errorModel.description?.localized ?? "", strAppend: ""))
+                default:
+                    break
+                }
             }
         }
     }

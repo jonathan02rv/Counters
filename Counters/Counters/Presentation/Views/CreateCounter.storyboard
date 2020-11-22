@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5an-dk-3Ec">
-                                <rect key="frame" x="29" y="26" width="317" height="55"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5an-dk-3Ec" customClass="DesignableTextField" customModule="Counters" customModuleProvider="target">
+                                <rect key="frame" x="12" y="26" width="351" height="55"/>
                                 <color key="backgroundColor" name="primaryWhiteColorApp"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="KcA-M7-Cct"/>
@@ -26,17 +26,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bo-zy-fIN">
+                                <rect key="frame" x="24" y="94" width="339" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7kM-bj-mf5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
-                            <constraint firstItem="5an-dk-3Ec" firstAttribute="leading" secondItem="7kM-bj-mf5" secondAttribute="leading" constant="29" id="K1N-Ah-YqS"/>
+                            <constraint firstItem="5an-dk-3Ec" firstAttribute="leading" secondItem="7kM-bj-mf5" secondAttribute="leading" constant="12" id="K1N-Ah-YqS"/>
+                            <constraint firstItem="3Bo-zy-fIN" firstAttribute="leading" secondItem="5an-dk-3Ec" secondAttribute="leading" constant="12" id="Nq4-0a-v11"/>
                             <constraint firstItem="5an-dk-3Ec" firstAttribute="top" secondItem="7kM-bj-mf5" secondAttribute="top" constant="26" id="RZh-d8-2sB"/>
-                            <constraint firstItem="7kM-bj-mf5" firstAttribute="trailing" secondItem="5an-dk-3Ec" secondAttribute="trailing" constant="29" id="dxR-BZ-WXh"/>
+                            <constraint firstItem="3Bo-zy-fIN" firstAttribute="trailing" secondItem="5an-dk-3Ec" secondAttribute="trailing" id="Sw4-xl-Yjx"/>
+                            <constraint firstItem="3Bo-zy-fIN" firstAttribute="top" secondItem="5an-dk-3Ec" secondAttribute="bottom" constant="13" id="Z4Y-ip-uzP"/>
+                            <constraint firstItem="7kM-bj-mf5" firstAttribute="trailing" secondItem="5an-dk-3Ec" secondAttribute="trailing" constant="12" id="dxR-BZ-WXh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lblCounterTitle" destination="5an-dk-3Ec" id="vYk-0b-Uci"/>
+                        <outlet property="lblExampleTitle" destination="3Bo-zy-fIN" id="yhr-Ob-4pw"/>
+                        <outlet property="txtCounterTitle" destination="5an-dk-3Ec" id="Dcq-cE-8jY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MB-xM-kNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -48,8 +58,8 @@
         <namedColor name="primaryWhiteColorApp">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

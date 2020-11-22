@@ -22,8 +22,13 @@
 "ErrorLoadCounters" = "Couldn’t load the counters";
 "ErrorLoadCountersMessage" = "The Internet connection appears to be offline.";
 
+//MARK: - Create Counter
+"ExampleTextCrateCounter" = "Give it a name. Creative block? See ";
+"ExamplesTextTap" = "examples.";
+"PlaceHolderCrateCounter" = "Cups of coffee";
+
 //MARK: - ERROS
 "defaultError" = "Something went wrong, we couldn't connect.";
-"networkConnectionError" = "the Internet connection appears to be offline.";
+"networkConnectionError" = "The Internet connection appears to be offline.";
 
 

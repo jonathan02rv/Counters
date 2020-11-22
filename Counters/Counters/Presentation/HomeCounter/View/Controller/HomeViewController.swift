@@ -45,6 +45,7 @@ class HomeViewController: UITableViewController {
     private func setupNavigation(){
         self.view.backgroundColor = .primaryGraceColorApp
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
         self.title = "Counters"
     }
     
