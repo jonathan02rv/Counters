@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CounterModel{
+public class CounterModel{
     public let id: String
     public let title: String
     public var count: Int

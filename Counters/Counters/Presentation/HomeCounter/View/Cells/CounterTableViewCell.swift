@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum TypeCellCounter{
+    case dataCounter
+    case dataFilterCounter
+}
+
 class CounterTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewCell: UIView!
@@ -25,13 +30,14 @@ class CounterTableViewCell: UITableViewCell {
     }
     
     private func setupViewCell(){
+        
         viewCell.layer.cornerRadius = 10
         viewCell.backgroundColor = .primaryWhiteColorApp
         viewSeparator.backgroundColor = .secundaryGraceColorApp
-        contentView.backgroundColor = .secundaryGraceColorApp
         stpCounter.maximumValue = Double(Constants.maxIncement)
         stpCounter.layer.cornerRadius = 10
         stpCounter.backgroundColor = .primaryWhiteColorApp
+        self.backgroundColor = .secundaryGraceColorApp
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,11 +46,22 @@ class CounterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var typeCell: TypeCellCounter = .dataCounter
+    
     var row:Int = 0{
         didSet{
-            stpCounter.value = Double(presenter.getValueCount(row: row))
+            
+            switch typeCell {
+            case .dataCounter:
+                stpCounter.value = Double(presenter.getValueCount(row: row))
+            case .dataFilterCounter:
+                stpCounter.value = Double(presenter.getValueFilterCount(row: row))
+            }
+            
         }
     }
+    
+    var idCounter = ""
     
     var title:String?{
         didSet{
@@ -60,7 +77,10 @@ class CounterTableViewCell: UITableViewCell {
         }
     }
     @IBAction func stepper(_ sender: UIStepper) {
-        presenter.setValueCount(value: sender.value, row: self.row)
+        
+//        print(self.parentViewController)
+        
+        presenter.setValueCount(value: sender.value, id: self.idCounter)
         count = Int(sender.value)
     }
     

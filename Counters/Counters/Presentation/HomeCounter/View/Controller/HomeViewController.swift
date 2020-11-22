@@ -67,8 +67,10 @@ extension HomeViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! CounterTableViewCell
         cell.presenter = self.presenter
+        cell.typeCell = .dataCounter
         cell.row = indexPath.row
         let itemCounter = presenter.getItemData(row: indexPath.row)
+        cell.idCounter = itemCounter.id
         cell.count = itemCounter.count
         cell.title = itemCounter.title
         
@@ -85,6 +87,10 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         guard let strippedString = searchController.searchBar.text?.trimmingCharacters(in: CharacterSet.whitespaces) else{return}
         presenter.fillSearchData(searchText: strippedString)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

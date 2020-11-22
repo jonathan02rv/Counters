@@ -16,8 +16,9 @@ protocol HomeViewPresenterProtocol{
     func getDataArray()->[CounterModel]
     func setDataFilter(data: [CounterModel])
     func fillSearchData(searchText: String)
-    func setValueCount(value: Double, row: Int)
+    func setValueCount(value: Double, id: String)
     func getValueCount(row:Int)->Int
+    func getValueFilterCount(row:Int)->Int
 }
 
 class HomeViewPresenter{
@@ -41,8 +42,13 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
         return homeData[row].count
     }
     
-    func setValueCount(value: Double, row: Int){
-        homeData[row].count = Int(value)
+    func getValueFilterCount(row:Int)->Int{
+        return filterData[row].count
+    }
+    
+    func setValueCount(value: Double, id: String){
+        guard let itemData = homeData.first(where: {$0.id == id}) else{return}
+        itemData.count = Int(value)
     }
     
     func clearSearchData(){

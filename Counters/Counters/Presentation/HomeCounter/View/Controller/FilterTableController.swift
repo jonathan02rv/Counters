@@ -18,6 +18,9 @@ class FilterTableController: UITableViewController {
         
         let nib = UINib(nibName: tableViewCellName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: tableViewCellIdentifier)
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.backgroundColor = .primaryGraceColorApp
     }
     
     
@@ -29,7 +32,12 @@ class FilterTableController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! CounterTableViewCell
+        cell.presenter = self.presenter
+        cell.typeCell = .dataFilterCounter
+        cell.row = indexPath.row
         let itemCounter = presenter.getItemFilterData(row: indexPath.row)
+        cell.idCounter = itemCounter.id
+        cell.count = itemCounter.count
         cell.title = itemCounter.title
         
         return cell
