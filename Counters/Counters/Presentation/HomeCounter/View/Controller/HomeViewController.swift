@@ -31,6 +31,7 @@ class HomeViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setupNavigation()
     }
     
 
@@ -39,6 +40,12 @@ class HomeViewController: UITableViewController {
         presenter.loadData()
         setupTable()
         setupSearchView()
+    }
+    
+    private func setupNavigation(){
+        self.view.backgroundColor = .primaryGraceColorApp
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Counters"
     }
     
     
@@ -179,6 +186,7 @@ extension HomeViewController: CustomMessageViewDelegate{
     func customAction(typeMessage: CustomMessageType) {
         switch typeMessage {
         case .emptyCounters:
+            presenter.goToCreateCounter()
             print("create counter")
         case .loadCountersError:
             presenter.loadData()

@@ -49,6 +49,11 @@
 		9A60D9A6256AD73300C9272C /* MessageHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9A4256AD73300C9272C /* MessageHomeTableViewCell.swift */; };
 		9A60D9A7256AD73300C9272C /* MessageHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A60D9A5256AD73300C9272C /* MessageHomeTableViewCell.xib */; };
 		9A60D9AD256AD91200C9272C /* HomeViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9AC256AD91200C9272C /* HomeViewData.swift */; };
+		9A60D9C4256AFAD600C9272C /* CreateCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9C3256AFAD600C9272C /* CreateCounterViewController.swift */; };
+		9A60D9CB256AFB4600C9272C /* CreateCounterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9CA256AFB4600C9272C /* CreateCounterConfigurator.swift */; };
+		9A60D9D3256AFB8D00C9272C /* CreateCounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9D2256AFB8D00C9272C /* CreateCounterPresenter.swift */; };
+		9A60D9D8256AFC1300C9272C /* CreateCounterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9D7256AFC1300C9272C /* CreateCounterRouter.swift */; };
+		9A60D9DD256AFCB000C9272C /* CreateCounter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A60D9DC256AFCB000C9272C /* CreateCounter.storyboard */; };
 		9A89A3AB25675C7C00B7A05D /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3A925675C7C00B7A05D /* WelcomeTableViewCell.swift */; };
 		9A89A3AC25675C7C00B7A05D /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A89A3AA25675C7C00B7A05D /* WelcomeTableViewCell.xib */; };
 		9A89A3B725675E4E00B7A05D /* WelcomeCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */; };
@@ -129,6 +134,11 @@
 		9A60D9A4256AD73300C9272C /* MessageHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHomeTableViewCell.swift; sourceTree = "<group>"; };
 		9A60D9A5256AD73300C9272C /* MessageHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageHomeTableViewCell.xib; sourceTree = "<group>"; };
 		9A60D9AC256AD91200C9272C /* HomeViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewData.swift; sourceTree = "<group>"; };
+		9A60D9C3256AFAD600C9272C /* CreateCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterViewController.swift; sourceTree = "<group>"; };
+		9A60D9CA256AFB4600C9272C /* CreateCounterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterConfigurator.swift; sourceTree = "<group>"; };
+		9A60D9D2256AFB8D00C9272C /* CreateCounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterPresenter.swift; sourceTree = "<group>"; };
+		9A60D9D7256AFC1300C9272C /* CreateCounterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterRouter.swift; sourceTree = "<group>"; };
+		9A60D9DC256AFCB000C9272C /* CreateCounter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCounter.storyboard; sourceTree = "<group>"; };
 		9A89A3A925675C7C00B7A05D /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		9A89A3AA25675C7C00B7A05D /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCounterController.swift; sourceTree = "<group>"; };
@@ -271,6 +281,9 @@
 		9A22B8C02565BF0C0024E81A /* CreateCounter */ = {
 			isa = PBXGroup;
 			children = (
+				9A60D9C2256AFA0500C9272C /* Router */,
+				9A60D9C1256AF9FF00C9272C /* Presenter */,
+				9A60D9C0256AF9F900C9272C /* View */,
 			);
 			path = CreateCounter;
 			sourceTree = "<group>";
@@ -459,6 +472,7 @@
 			children = (
 				9A22B88C2564FC2E0024E81A /* Main.storyboard */,
 				9AB932A225677BCE0080FB6F /* Home.storyboard */,
+				9A60D9DC256AFCB000C9272C /* CreateCounter.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -584,6 +598,47 @@
 				9A60D9AC256AD91200C9272C /* HomeViewData.swift */,
 			);
 			path = ViewData;
+			sourceTree = "<group>";
+		};
+		9A60D9C0256AF9F900C9272C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A60D9C9256AFB3700C9272C /* Configurator */,
+				9A60D9C8256AFB2E00C9272C /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9A60D9C1256AF9FF00C9272C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9A60D9D2256AFB8D00C9272C /* CreateCounterPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9A60D9C2256AFA0500C9272C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9A60D9D7256AFC1300C9272C /* CreateCounterRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9A60D9C8256AFB2E00C9272C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A60D9C3256AFAD600C9272C /* CreateCounterViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9A60D9C9256AFB3700C9272C /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				9A60D9CA256AFB4600C9272C /* CreateCounterConfigurator.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 		9A89A3A725675C4900B7A05D /* Controller */ = {
@@ -802,6 +857,7 @@
 				9A53FEC725672907000E4346 /* SFProDisplay-Bold.ttf in Resources */,
 				9A89A3AC25675C7C00B7A05D /* WelcomeTableViewCell.xib in Resources */,
 				9A22B88E2564FC2E0024E81A /* Main.storyboard in Resources */,
+				9A60D9DD256AFCB000C9272C /* CreateCounter.storyboard in Resources */,
 				9A60D9A7256AD73300C9272C /* MessageHomeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -836,6 +892,7 @@
 				9A60D9AD256AD91200C9272C /* HomeViewData.swift in Sources */,
 				9A22B91C2565EA280024E81A /* ErrorEntity.swift in Sources */,
 				9A22B9452565F49E0024E81A /* CounterInteractor.swift in Sources */,
+				9A60D9CB256AFB4600C9272C /* CreateCounterConfigurator.swift in Sources */,
 				9A22B96C2566B4BF0024E81A /* FontsApp.swift in Sources */,
 				9A53FF0025674D8A000E4346 /* WelcomeCounterConfigurator.swift in Sources */,
 				9A22B8F02565C8390024E81A /* TimberjackHelper.swift in Sources */,
@@ -844,9 +901,11 @@
 				9A22B90A2565CE590024E81A /* CounterModel.swift in Sources */,
 				9A53FEF825674CD3000E4346 /* WelcomeCounterRouter.swift in Sources */,
 				9A22B8892564FC2E0024E81A /* SceneDelegate.swift in Sources */,
+				9A60D9C4256AFAD600C9272C /* CreateCounterViewController.swift in Sources */,
 				9A22B9032565CDBD0024E81A /* CounterEntity.swift in Sources */,
 				9A22B8F62565CADC0024E81A /* Rechability.swift in Sources */,
 				9A5D102625677013006A4E1A /* RoundedCornerButton.swift in Sources */,
+				9A60D9D3256AFB8D00C9272C /* CreateCounterPresenter.swift in Sources */,
 				9A89A3C2256760C900B7A05D /* Protocols.swift in Sources */,
 				9A22B93F2565F4610024E81A /* Interactor.swift in Sources */,
 				9A22B9312565EF700024E81A /* CounterRepositoryProtocol.swift in Sources */,
@@ -865,6 +924,7 @@
 				9AB932C425677D520080FB6F /* HomeViewPresenter.swift in Sources */,
 				9A22B8D12565C19A0024E81A /* RequestProtocol.swift in Sources */,
 				9A89A3B725675E4E00B7A05D /* WelcomeCounterController.swift in Sources */,
+				9A60D9D8256AFC1300C9272C /* CreateCounterRouter.swift in Sources */,
 				9AB932C925677D640080FB6F /* HomeViewRouter.swift in Sources */,
 				9A22B95E2566AFD90024E81A /* ColorPalette.swift in Sources */,
 				9A22B9672566B33E0024E81A /* Utils.swift in Sources */,

@@ -30,14 +30,13 @@ class CounterTableViewCell: UITableViewCell {
     }
     
     private func setupViewCell(){
-        
+        self.backgroundColor = .clear
         viewCell.layer.cornerRadius = 10
         viewCell.backgroundColor = .primaryWhiteColorApp
         viewSeparator.backgroundColor = .secundaryGraceColorApp
         stpCounter.maximumValue = Double(Constants.maxIncement)
         stpCounter.layer.cornerRadius = 10
         stpCounter.backgroundColor = .primaryWhiteColorApp
-        self.backgroundColor = .secundaryGraceColorApp
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

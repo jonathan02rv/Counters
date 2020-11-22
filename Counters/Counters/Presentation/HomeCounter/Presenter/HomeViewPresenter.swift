@@ -21,6 +21,7 @@ protocol HomeViewPresenterProtocol{
     func getValueFilterCount(row:Int)->Int
     func getListCounters()
     func callRetryService(typeError: TypErrorCounter, homeData: CounterModel, value: Int)
+    func goToCreateCounter()
     
     
     func getNumberOfRowErrorData()->Int
@@ -29,7 +30,7 @@ protocol HomeViewPresenterProtocol{
 }
 
 class HomeViewPresenter{
-    weak var view: HomeViewControllerProtocol?
+    private weak var view: HomeViewControllerProtocol?
     private var interactorCounter: CounterInteractorProtocol!
     private var router: HomeViewRouterProtocol!
     
@@ -45,6 +46,10 @@ class HomeViewPresenter{
 }
 
 extension HomeViewPresenter: HomeViewPresenterProtocol{
+    
+    func goToCreateCounter(){
+        router.routeToCreateCounter()
+    }
     
     func getMessageDataCell(row:Int)->ErrorHomeViewData{
         return errorData[row]
@@ -126,6 +131,7 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
     }
     
     func getListCounters(){
+        setEmptyErrorHome()
         self.interactorCounter.getCountersAll { [weak self](result) in
             guard let sweak = self else {return}
             sweak.view?.finishLoading()
@@ -166,7 +172,6 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
     }
     
     func setErrorHomeData(tymeMessage: CustomMessageType){
-        setEmptyErrorHome()
         switch tymeMessage {
         case .emptyCounters:
             let errorData = ErrorHomeViewData(title: "NoCountersYet".localized, description: "NoCountersYetMessage".localized, titleButton: "CreateAccountTitleBtn".localized, typeMessage: tymeMessage)

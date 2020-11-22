@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Counter View Controller-->
+        <scene sceneID="YGD-5d-Yoa">
+            <objects>
+                <viewController storyboardIdentifier="createCounterViewController" id="D4p-3M-bfl" customClass="CreateCounterViewController" customModule="Counters" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HEP-hm-JQb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5an-dk-3Ec">
+                                <rect key="frame" x="29" y="26" width="317" height="55"/>
+                                <color key="backgroundColor" name="primaryWhiteColorApp"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="KcA-M7-Cct"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7kM-bj-mf5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5an-dk-3Ec" firstAttribute="leading" secondItem="7kM-bj-mf5" secondAttribute="leading" constant="29" id="K1N-Ah-YqS"/>
+                            <constraint firstItem="5an-dk-3Ec" firstAttribute="top" secondItem="7kM-bj-mf5" secondAttribute="top" constant="26" id="RZh-d8-2sB"/>
+                            <constraint firstItem="7kM-bj-mf5" firstAttribute="trailing" secondItem="5an-dk-3Ec" secondAttribute="trailing" constant="29" id="dxR-BZ-WXh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblCounterTitle" destination="5an-dk-3Ec" id="vYk-0b-Uci"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4MB-xM-kNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="71" y="58"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="primaryWhiteColorApp">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
