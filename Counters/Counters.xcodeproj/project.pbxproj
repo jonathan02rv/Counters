@@ -305,12 +305,12 @@
 		9A22B8C82565BFF70024E81A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				9A22B8CF2565C1780024E81A /* Request */,
 				9A22B9132565E96E0024E81A /* Responses */,
 				9A22B8FB2565CB200024E81A /* Protocols */,
 				9A22B8FA2565CB0F0024E81A /* Implementation */,
 				9A22B8F42565CABA0024E81A /* Rechability */,
 				9A22B8E62565C72A0024E81A /* Setup */,
-				9A22B8CF2565C1780024E81A /* Request */,
 			);
 			path = Network;
 			sourceTree = "<group>";

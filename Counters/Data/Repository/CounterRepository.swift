@@ -22,7 +22,7 @@ public class CounterRepository: CounterRepositoryProtocol{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(ErrorEntity.get(error)))
             }
         }
     }
@@ -34,7 +34,7 @@ public class CounterRepository: CounterRepositoryProtocol{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(ErrorEntity.get(error)))
             }
         }
     }
@@ -46,7 +46,7 @@ public class CounterRepository: CounterRepositoryProtocol{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(ErrorEntity.get(error)))
             }
         }
     }
@@ -58,7 +58,7 @@ public class CounterRepository: CounterRepositoryProtocol{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(ErrorEntity.get(error)))
             }
         }
     }
@@ -70,7 +70,7 @@ public class CounterRepository: CounterRepositoryProtocol{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(ErrorEntity.get(error)))
             }
         }
     }

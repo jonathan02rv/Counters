@@ -25,14 +25,15 @@ extension UILabel{
 enum TypErrorCounter{
     case create
     case increment
+    case decrement
     case delete
     
     func getTitleAlert()->String{
         switch self {
         case .create:
             return NSLocalizedString("createErrorAlertTitle", comment: "createErrorAlertTitle")
-        case .increment:
-            return NSLocalizedString("incrementErrorAlertTitle", comment: "incrementErrorAlertTitle")
+        case .increment,.decrement:
+            return NSLocalizedString("updateErrorAlertTitle", comment: "updateErrorAlertTitle")
         case .delete:
             return NSLocalizedString("deleteErrorAlertTitle", comment: "deleteErrorAlertTitle")
         }
@@ -59,28 +60,32 @@ extension UIViewController{
         activityView = nil
     }
     
-    func showCounterAlert(typeAlert: TypErrorCounter, action: (() -> Void)?){
-        let message:String = NSLocalizedString("offLineMessage", comment: "offLineMessage")
+    func showCounterAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String), action: ((UIAlertAction) -> Void)?){
         let dismissTtitle:String = NSLocalizedString("dismissTitle", comment: "dismissTitle")
-        let alert = UIAlertController(title: typeAlert.getTitleAlert(), message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "\(typeAlert.getTitleAlert())\(messageData.strAppend)", message: messageData.message, preferredStyle: .alert)
         
         switch typeAlert {
-        case .increment:
+        case .increment,.decrement:
             let retryTitle:String = NSLocalizedString("retry", comment: "retry")
-            alert.addAction(UIAlertAction(title: dismissTtitle, style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: dismissTtitle, style: .default, handler: nil))
             
-            alert.addAction(UIAlertAction(title: retryTitle, style: .default, handler: { [weak self](handler) in
-                guard let _ = self else{return}
-                guard let actionParam = action else{return}
-                _ = actionParam
-            }))
+            alert.addAction(UIAlertAction(title: retryTitle, style: .cancel, handler: action))
             break
         case .create,.delete:
             alert.addAction(UIAlertAction(title: dismissTtitle, style: .cancel, handler: nil))
             break
         }
         
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+}
+
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment:"")
     }
 }
 

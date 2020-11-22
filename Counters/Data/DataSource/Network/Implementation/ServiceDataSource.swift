@@ -35,7 +35,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
                 switch response.result{
                 case .success(let data):
                     guard let dataResponse = try? JSONDecoder().decode([CounterEntity].self, from: data) else{
-                        return completion(.failure(ServiceErrorHandler.get(code: nil, description: nil)))
+                        return completion(.failure(ServiceErrorHandler.getParseError()))
                     }
                     completion(.success(dataResponse))
                     break
@@ -64,7 +64,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
                 switch response.result{
                 case .success(let data):
                     guard let dataResponse = try? JSONDecoder().decode([CounterEntity].self, from: data) else{
-                        return completion(.failure(ServiceErrorHandler.get(code: nil, description: nil)))
+                        return completion(.failure(ServiceErrorHandler.getParseError()))
                     }
                     completion(.success(dataResponse))
                     break
@@ -93,7 +93,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
                 switch response.result{
                 case .success(let data):
                     guard let dataResponse = try? JSONDecoder().decode([CounterEntity].self, from: data) else{
-                        return completion(.failure(ServiceErrorHandler.get(code: nil, description: nil)))
+                        return completion(.failure(ServiceErrorHandler.getParseError()))
                     }
                     completion(.success(dataResponse))
                     break
@@ -122,7 +122,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
                 switch response.result{
                 case .success(let data):
                     guard let dataResponse = try? JSONDecoder().decode([CounterEntity].self, from: data) else{
-                        return completion(.failure(ServiceErrorHandler.get(code: nil, description: nil)))
+                        return completion(.failure(ServiceErrorHandler.getParseError()))
                     }
                     completion(.success(dataResponse))
                     break
@@ -151,7 +151,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
                 switch response.result{
                 case .success(let data):
                     guard let dataResponse = try? JSONDecoder().decode([CounterEntity].self, from: data) else{
-                        return completion(.failure(ServiceErrorHandler.get(code: nil, description: nil)))
+                        return completion(.failure(ServiceErrorHandler.getParseError()))
                     }
                     completion(.success(dataResponse))
                     break

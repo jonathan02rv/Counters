@@ -20,6 +20,7 @@ protocol HomeViewPresenterProtocol{
     func getValueCount(row:Int)->Int
     func getValueFilterCount(row:Int)->Int
     func getListCounters()
+    func callRetryService(typeError: TypErrorCounter, homeData: CounterModel, value: Int)
 }
 
 class HomeViewPresenter{
@@ -49,11 +50,11 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
     
     func setValueCount(value: Double, id: String){
         guard let itemData = homeData.first(where: {$0.id == id}) else{return}
-        
-        if itemData.count < Int(value){
-            incrementCounter(idCounnter: id)
+        let intValue = Int(value)
+        if itemData.count < intValue{
+            incrementCounter(homeData: itemData, value: intValue)
         }else{
-            decrementCounter(idCounnter: id)
+            decrementCounter(homeData: itemData, value: intValue)
         }
     }
     
@@ -113,15 +114,28 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
                 break
             case .failure(let error):
                 print("\(error)")
-                break
+                
+                guard let errorModel =  error as? ErrorModel else {
+                    print("ERROR: \(error.localizedDescription)")
+                    return
+                }
+                switch errorModel.type {
+                case .networkError:
+                    print("ERROR: \(errorModel.description ?? "")")
+                case .custom:
+                    print("ERROR: \(errorModel.description ?? "")")
+                case .unknownError:
+                    print("ERROR: \(errorModel.description ?? "")")
+                default:
+                    break
+                }
             }
-
         }
     }
     
-    func incrementCounter(idCounnter: String){
+    func incrementCounter(homeData: CounterModel, value: Int){
         self.view?.startLoading()
-        interactorCounter.incrementCounter(counterId: idCounnter) { [weak self](result) in
+        interactorCounter.incrementCounter(counterId: homeData.id) { [weak self](result) in
             guard let sweak = self else {return}
             sweak.view?.finishLoading()
             switch result{
@@ -131,14 +145,25 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
                 break
             case .failure(let error):
                 print("\(error)")
-                break
+                guard let errorModel =  error as? ErrorModel else {
+                    print("ERROR: \(error.localizedDescription)")
+                    return
+                }
+                switch errorModel.type {
+                case .networkError,.custom,.unknownError,.parseModel:
+                    let strAppend = "\"\(homeData.title)\"\("counterTo".localized)\(value)"
+                    sweak.view?.showAlert(typeAlert: .increment, messageData: (message: errorModel.description ?? "", strAppend: strAppend), homeData: homeData, value: value)
+                    print("ERROR: \(errorModel.description ?? "")")
+                default:
+                    break
+                }
             }
         }
     }
     
-    func decrementCounter(idCounnter: String){
+    func decrementCounter(homeData: CounterModel, value: Int){
         self.view?.startLoading()
-        interactorCounter.decrementCounter(counterId: idCounnter) { [weak self](result) in
+        interactorCounter.decrementCounter(counterId: homeData.id) { [weak self](result) in
             guard let sweak = self else {return}
             sweak.view?.finishLoading()
             switch result{
@@ -148,8 +173,30 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
                 break
             case .failure(let error):
                 print("\(error)")
-                break
+                guard let errorModel =  error as? ErrorModel else {
+                    print("ERROR: \(error.localizedDescription)")
+                    return
+                }
+                switch errorModel.type {
+                case .networkError,.custom,.unknownError,.parseModel:
+                    let strAppend = "\"\(homeData.title)\"\("counterTo".localized)\(value)"
+                    sweak.view?.showAlert(typeAlert: .decrement, messageData: (message: errorModel.description ?? "", strAppend: strAppend), homeData: homeData, value: value)
+                    print("ERROR: \(errorModel.description ?? "")")
+                default:
+                    break
+                }
             }
+        }
+    }
+    
+    func callRetryService(typeError: TypErrorCounter, homeData: CounterModel, value: Int) {
+        switch typeError {
+        case .increment:
+            self.incrementCounter(homeData: homeData, value: value)
+        case .decrement:
+            self.decrementCounter(homeData: homeData, value: value)
+        default:
+            break
         }
     }
 }

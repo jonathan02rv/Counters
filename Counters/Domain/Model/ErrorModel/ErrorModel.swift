@@ -12,6 +12,7 @@ public enum ResponseType: String {
     case unknownError
     case networkError
     case custom
+    case parseModel
 }
 
 public class ErrorModel: Error{

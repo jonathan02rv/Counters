@@ -50,14 +50,7 @@ class CounterTableViewCell: UITableViewCell {
     
     var row:Int = 0{
         didSet{
-            
-            switch typeCell {
-            case .dataCounter:
-                stpCounter.value = Double(presenter.getValueCount(row: row))
-            case .dataFilterCounter:
-                stpCounter.value = Double(presenter.getValueFilterCount(row: row))
-            }
-            
+            updateRefreshCounter()
         }
     }
     
@@ -77,11 +70,8 @@ class CounterTableViewCell: UITableViewCell {
         }
     }
     @IBAction func stepper(_ sender: UIStepper) {
-        
-//        print(self.parentViewController)
-        
         presenter.setValueCount(value: sender.value, id: self.idCounter)
-        count = Int(sender.value)
+        updateRefreshCounter()
     }
     
     
@@ -96,5 +86,14 @@ class CounterTableViewCell: UITableViewCell {
     private func setFontCell(){
         lblCount.setCustomFont(size: .s24, color: .secundaryGraceColorApp, customFont: .bold)
         lblTitle.setCustomFont(size: .s17, color: .primaryBlackColorApp, customFont: .regular)
+    }
+    
+    private func updateRefreshCounter(){
+        switch typeCell {
+        case .dataCounter:
+            stpCounter.value = Double(presenter.getValueCount(row: row))
+        case .dataFilterCounter:
+            stpCounter.value = Double(presenter.getValueFilterCount(row: row))
+        }
     }
 }

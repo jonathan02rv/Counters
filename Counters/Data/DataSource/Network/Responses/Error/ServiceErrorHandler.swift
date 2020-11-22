@@ -11,6 +11,7 @@ enum ServiceErrorType: String {
     case unknownError
     case networkError
     case custom
+    case parseModel
 }
 
 class ServiceErrorHandler {
@@ -20,6 +21,10 @@ class ServiceErrorHandler {
             return ErrorEntity(type: .unknownError, reason: NSLocalizedString("defaultError", comment: "defaultError"))
         }
         return ErrorEntity(type: ServiceErrorType(rawValue: code) ?? ServiceErrorType.custom, reason: description)
+    }
+    
+    static func getParseError() -> Error {
+        return ErrorEntity(type: .parseModel, reason: NSLocalizedString("defaultError", comment: "defaultError"))
     }
     
     static func getNetworkError()-> Error {

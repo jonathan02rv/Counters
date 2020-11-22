@@ -10,6 +10,7 @@ import UIKit
 protocol HomeViewControllerProtocol:class, ViewProtocol{
     func reloadData()
     func reloadDataFilter()
+    func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),homeData: CounterModel, value: Int)
 }
 
 class HomeViewController: UITableViewController {
@@ -106,6 +107,12 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating{
 }
 
 extension HomeViewController: HomeViewControllerProtocol{
+    func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),homeData: CounterModel, value: Int){
+        self.showCounterAlert(typeAlert: typeAlert, messageData: messageData, action: { actionTest in
+            self.presenter.callRetryService(typeError: typeAlert,homeData: homeData, value: value)
+        })
+    }
+    
     func reloadDataFilter() {
         if let filterController = searchController.searchResultsController as? FilterTableController {
             filterController.tableView.reloadData()
