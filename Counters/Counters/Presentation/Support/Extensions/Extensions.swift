@@ -110,6 +110,7 @@ extension UIColor{
     static var primaryWhiteColorApp:UIColor? {return UIColor(named: ColorsApp.primaryWhiteColorApp.rawValue)}
     static var secundaryBlackColorApp:UIColor? {return UIColor(named: ColorsApp.secundaryBlackColorApp.rawValue)}
     static var secundaryGraceColorApp:UIColor? {return UIColor(named: ColorsApp.secundaryGraceColorApp.rawValue)}
+    static var thirdBlackColorApp:UIColor? {return UIColor(named: ColorsApp.thirdBlackColorApp.rawValue)}
 }
 
 extension UIWindow {

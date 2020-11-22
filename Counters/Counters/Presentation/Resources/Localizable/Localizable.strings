@@ -15,6 +15,12 @@
 "dismissTitle" = "Dismiss";
 "retry" = "Retry";
 
+"NoCountersYet" = "No counters Yet";
+"NoCountersYetMessage" = "When I started counting my blessings, my whole life turned around.";
+"CreateAccountTitleBtn" = "Create a counter";
+
+"ErrorLoadCounters" = "Couldn’t load the counters";
+"ErrorLoadCountersMessage" = "The Internet connection appears to be offline.";
 
 //MARK: - ERROS
 "defaultError" = "Something went wrong, we couldn't connect.";

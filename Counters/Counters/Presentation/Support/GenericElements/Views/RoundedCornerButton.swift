@@ -20,6 +20,10 @@ class RoundedCornerButton: UIButton{
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     private func setPrimaryFilled() {
         DispatchQueue.main.async(execute: {
             self.setTitleColor(UIColor(named: ColorsApp.primaryWhiteColorApp.rawValue), for: .normal)
@@ -30,4 +34,5 @@ class RoundedCornerButton: UIButton{
             self.layer.cornerRadius = 10
         })
     }
+
 }

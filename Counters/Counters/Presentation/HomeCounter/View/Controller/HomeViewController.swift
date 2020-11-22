@@ -29,6 +29,10 @@ class HomeViewController: UITableViewController {
         initView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+    
 
     private func initView(){
         self.configurator.configure(controller: self)
@@ -41,6 +45,10 @@ class HomeViewController: UITableViewController {
     private func setupTable(){
         let nib = UINib(nibName: tableViewCellName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: tableViewCellIdentifier)
+        
+        let nibMessage = UINib(nibName: "MessageHomeTableViewCell", bundle: nil)
+        tableView.register(nibMessage, forCellReuseIdentifier: "messageHomeTableViewCell")
+        
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.backgroundColor = .primaryGraceColorApp
@@ -65,24 +73,57 @@ class HomeViewController: UITableViewController {
     @objc func refreshData(_ refreshControl: UIRefreshControl){
         presenter.getListCounters()
     }
+    
 }
 
 extension HomeViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.getNumberOfRowData()
+        
+        
+        switch presenter.hasErrorHome() {
+        case false:
+            return presenter.getNumberOfRowData()
+        case true:
+            return presenter.getNumberOfRowErrorData()
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! CounterTableViewCell
-        cell.presenter = self.presenter
-        cell.typeCell = .dataCounter
-        cell.row = indexPath.row
-        let itemCounter = presenter.getItemData(row: indexPath.row)
-        cell.idCounter = itemCounter.id
-        cell.count = itemCounter.count
-        cell.title = itemCounter.title
         
-        return cell
+        
+        switch presenter.hasErrorHome() {
+        case false:
+            let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! CounterTableViewCell
+            cell.presenter = self.presenter
+            cell.typeCell = .dataCounter
+            cell.row = indexPath.row
+            let itemCounter = presenter.getItemData(row: indexPath.row)
+            cell.idCounter = itemCounter.id
+            cell.count = itemCounter.count
+            cell.title = itemCounter.title
+            
+            return cell
+        case true:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "messageHomeTableViewCell", for: indexPath) as! MessageHomeTableViewCell
+            cell.delegate = self
+            let dataForCell = presenter.getMessageDataCell(row: indexPath.row)
+            cell.typeMessage = dataForCell.typeMessage
+            cell.title = dataForCell.title
+            cell.message = dataForCell.description
+            cell.titleButtonn = dataForCell.titleButton
+            return cell
+        }
+        
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch presenter.hasErrorHome() {
+        case false:
+            return UITableView.automaticDimension
+        case true:
+            return tableView.bounds.height - 300
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -132,4 +173,18 @@ extension HomeViewController: HomeViewControllerProtocol{
         refreshControl?.endRefreshing()
         self.hideActivity()
     }
+}
+
+extension HomeViewController: CustomMessageViewDelegate{
+    func customAction(typeMessage: CustomMessageType) {
+        switch typeMessage {
+        case .emptyCounters:
+            print("create counter")
+        case .loadCountersError:
+            presenter.loadData()
+            print("retry load counters")
+        }
+    }
+    
+    
 }

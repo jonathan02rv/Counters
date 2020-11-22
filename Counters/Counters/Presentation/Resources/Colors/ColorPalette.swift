@@ -14,4 +14,5 @@ enum ColorsApp:String{
     case primaryWhiteColorApp
     case secundaryBlackColorApp
     case secundaryGraceColorApp
+    case thirdBlackColorApp
 }

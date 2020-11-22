@@ -21,6 +21,11 @@ protocol HomeViewPresenterProtocol{
     func getValueFilterCount(row:Int)->Int
     func getListCounters()
     func callRetryService(typeError: TypErrorCounter, homeData: CounterModel, value: Int)
+    
+    
+    func getNumberOfRowErrorData()->Int
+    func hasErrorHome()->Bool
+    func getMessageDataCell(row:Int)->ErrorHomeViewData
 }
 
 class HomeViewPresenter{
@@ -28,6 +33,7 @@ class HomeViewPresenter{
     private var interactorCounter: CounterInteractorProtocol!
     private var router: HomeViewRouterProtocol!
     
+    var errorData = [ErrorHomeViewData]()
     var homeData = [CounterModel]()
     var filterData = [CounterModel]()
     
@@ -39,6 +45,22 @@ class HomeViewPresenter{
 }
 
 extension HomeViewPresenter: HomeViewPresenterProtocol{
+    
+    func getMessageDataCell(row:Int)->ErrorHomeViewData{
+        return errorData[row]
+    }
+    
+    func getNumberOfRowErrorData()->Int{
+        return errorData.count
+    }
+    
+    func hasErrorHome()->Bool{
+        return errorData.count > 0
+    }
+    
+    func setEmptyErrorHome(){
+        self.errorData = [ErrorHomeViewData]()
+    }
     
     func getValueCount(row:Int)->Int{
         return homeData[row].count
@@ -110,9 +132,19 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
             switch result{
             case .success(let data):
                 sweak.homeData = data
+                
+                if data.count == 0{
+                    sweak.setErrorHomeData(tymeMessage: .emptyCounters)
+                }
+                
                 sweak.view?.reloadData()
                 break
             case .failure(let error):
+                
+                if sweak.homeData.count == 0{
+                    sweak.setErrorHomeData(tymeMessage: .loadCountersError)
+                }
+                sweak.view?.reloadData()
                 print("\(error)")
                 
                 guard let errorModel =  error as? ErrorModel else {
@@ -130,6 +162,18 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
                     break
                 }
             }
+        }
+    }
+    
+    func setErrorHomeData(tymeMessage: CustomMessageType){
+        setEmptyErrorHome()
+        switch tymeMessage {
+        case .emptyCounters:
+            let errorData = ErrorHomeViewData(title: "NoCountersYet".localized, description: "NoCountersYetMessage".localized, titleButton: "CreateAccountTitleBtn".localized, typeMessage: tymeMessage)
+            self.errorData.append(errorData)
+        case .loadCountersError:
+            let errorData = ErrorHomeViewData(title: "ErrorLoadCounters".localized, description: "ErrorLoadCountersMessage".localized, titleButton: "retry".localized, typeMessage: tymeMessage)
+            self.errorData.append(errorData)
         }
     }
     
