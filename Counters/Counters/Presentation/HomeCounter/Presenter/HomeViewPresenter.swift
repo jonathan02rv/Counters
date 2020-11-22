@@ -19,6 +19,7 @@ protocol HomeViewPresenterProtocol{
     func setValueCount(value: Double, id: String)
     func getValueCount(row:Int)->Int
     func getValueFilterCount(row:Int)->Int
+    func getListCounters()
 }
 
 class HomeViewPresenter{
@@ -48,7 +49,12 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
     
     func setValueCount(value: Double, id: String){
         guard let itemData = homeData.first(where: {$0.id == id}) else{return}
-        itemData.count = Int(value)
+        
+        if itemData.count < Int(value){
+            incrementCounter(idCounnter: id)
+        }else{
+            decrementCounter(idCounnter: id)
+        }
     }
     
     func clearSearchData(){
@@ -92,15 +98,14 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
     
     
     func loadData() {
+        self.view?.startLoading()
         getListCounters()
     }
     
     func getListCounters(){
-        
         self.interactorCounter.getCountersAll { [weak self](result) in
-            
             guard let sweak = self else {return}
-            
+            sweak.view?.finishLoading()
             switch result{
             case .success(let data):
                 sweak.homeData = data
@@ -111,6 +116,40 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
                 break
             }
 
+        }
+    }
+    
+    func incrementCounter(idCounnter: String){
+        self.view?.startLoading()
+        interactorCounter.incrementCounter(counterId: idCounnter) { [weak self](result) in
+            guard let sweak = self else {return}
+            sweak.view?.finishLoading()
+            switch result{
+            case .success(let data):
+                sweak.homeData = data
+                sweak.view?.reloadData()
+                break
+            case .failure(let error):
+                print("\(error)")
+                break
+            }
+        }
+    }
+    
+    func decrementCounter(idCounnter: String){
+        self.view?.startLoading()
+        interactorCounter.decrementCounter(counterId: idCounnter) { [weak self](result) in
+            guard let sweak = self else {return}
+            sweak.view?.finishLoading()
+            switch result{
+            case .success(let data):
+                sweak.homeData = data
+                sweak.view?.reloadData()
+                break
+            case .failure(let error):
+                print("\(error)")
+                break
+            }
         }
     }
 }

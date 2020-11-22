@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeViewControllerProtocol:class{
+protocol HomeViewControllerProtocol:class, ViewProtocol{
     func reloadData()
     func reloadDataFilter()
 }
@@ -43,6 +43,9 @@ class HomeViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.backgroundColor = .primaryGraceColorApp
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged)
     }
     
     private func setupSearchView(){
@@ -56,6 +59,10 @@ class HomeViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.tintColor = .primaryOrangeColorApp
         navigationController?.navigationBar.tintColor = .primaryOrangeColorApp
+    }
+    
+    @objc func refreshData(_ refreshControl: UIRefreshControl){
+        presenter.getListCounters()
     }
 }
 
@@ -107,5 +114,15 @@ extension HomeViewController: HomeViewControllerProtocol{
     
     func reloadData(){
         self.tableView.reloadData()
+    }
+    
+    //MARK: - TEST
+    func startLoading() {
+        self.showActivity()
+    }
+    
+    func finishLoading(){
+        refreshControl?.endRefreshing()
+        self.hideActivity()
     }
 }

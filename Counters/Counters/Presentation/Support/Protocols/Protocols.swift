@@ -9,3 +9,8 @@ import Foundation
 
 protocol ViewData{
 }
+
+protocol ViewProtocol {
+    func startLoading()
+    func finishLoading()
+}

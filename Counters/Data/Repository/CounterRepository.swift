@@ -29,7 +29,7 @@ public class CounterRepository: CounterRepositoryProtocol{
     
     public func createCounter(counterTitle:String, completion: @escaping (Result<[CounterModel], Error>) -> Void) {
         let params = ["title":"\(counterTitle)"] as [String : Any]
-        self.dataSource.getCountersAll(request: CreateCounterRequestObject(parameters: params)) { (result) in
+        self.dataSource.createCounter(request: CreateCounterRequestObject(parameters: params)) { (result) in
             switch result{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))
@@ -41,7 +41,7 @@ public class CounterRepository: CounterRepositoryProtocol{
     
     public func deteleCounter(counterId:String, completion: @escaping (Result<[CounterModel], Error>) -> Void) {
         let params = ["id":"\(counterId)"] as [String : Any]
-        self.dataSource.getCountersAll(request: DeleteCounterRequestObject(parameters: params)) { (result) in
+        self.dataSource.deteleCounter(request: DeleteCounterRequestObject(parameters: params)) { (result) in
             switch result{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))
@@ -53,7 +53,7 @@ public class CounterRepository: CounterRepositoryProtocol{
     
     public func incrementCounter(counterId:String, completion: @escaping (Result<[CounterModel], Error>) -> Void) {
         let params = ["id":"\(counterId)"] as [String : Any]
-        self.dataSource.getCountersAll(request: IncrementCounterRequestObject(parameters: params)) { (result) in
+        self.dataSource.incrementCounter(request: IncrementCounterRequestObject(parameters: params)) { (result) in
             switch result{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))
@@ -65,7 +65,7 @@ public class CounterRepository: CounterRepositoryProtocol{
     
     public func decrementCounter(counterId:String, completion: @escaping (Result<[CounterModel], Error>) -> Void) {
         let params = ["id":"\(counterId)"] as [String : Any]
-        self.dataSource.getCountersAll(request: DecrementCounterRequestObject(parameters: params)) { (result) in
+        self.dataSource.decrementCounter(request: DecrementCounterRequestObject(parameters: params)) { (result) in
             switch result{
             case .success(let data):
                 completion(.success(CounterEntity.mapperCounterArray(dataArray: data)))

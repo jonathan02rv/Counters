@@ -56,7 +56,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
             guard let requestRef = request as? CreateCounterRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
-            sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
+            sessionManager?.request(url, method: requestRef.method, parameters: requestRef.parameters, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
                 
                 let responseStr = NSString(data: response.data ?? Data(), encoding: String.Encoding.utf8.rawValue)
                 debugPrint(responseStr ?? "")
@@ -85,7 +85,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
             guard let requestRef = request as? DeleteCounterRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
-            sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
+            sessionManager?.request(url, method: requestRef.method, parameters: requestRef.parameters, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
                 
                 let responseStr = NSString(data: response.data ?? Data(), encoding: String.Encoding.utf8.rawValue)
                 debugPrint(responseStr ?? "")
@@ -114,7 +114,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
             guard let requestRef = request as? IncrementCounterRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
-            sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
+            sessionManager?.request(url, method: requestRef.method, parameters: request.parameters, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
                 
                 let responseStr = NSString(data: response.data ?? Data(), encoding: String.Encoding.utf8.rawValue)
                 debugPrint(responseStr ?? "")
@@ -143,7 +143,7 @@ class ServiceDataSource: ServiceDataSourceProtocol{
             guard let requestRef = request as? DecrementCounterRequestObject else{return}
             let url = AppConfig.serverBaseUrl + requestRef.path
             
-            sessionManager?.request(url, method: requestRef.method, parameters: nil, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
+            sessionManager?.request(url, method: requestRef.method, parameters: requestRef.parameters, encoding: requestRef.encoding, headers: requestRef.headers).validate().debugLog().responseData(completionHandler: { (response) in
                 
                 let responseStr = NSString(data: response.data ?? Data(), encoding: String.Encoding.utf8.rawValue)
                 debugPrint(responseStr ?? "")
