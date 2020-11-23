@@ -13,9 +13,10 @@ protocol CreateCounterConfiguratorProtocol{
 
 class CreateCounterConfigurator: CreateCounterConfiguratorProtocol {
     func configure(controller: CreateCounterViewController) {
+        let interactorStorageData = StorageDataInteractor(repository: StorageDataRepository())
         let interactorCounter = CounterInteractor(repository: CounterRepository())
         let router = CreateCounterRouter(controller: controller)
-        controller.presenter = CreateCounterPresenter(view: controller, interactorCounter: interactorCounter, router: router)
+        controller.presenter = CreateCounterPresenter(view: controller, interactorStorageData: interactorStorageData, interactorCounter: interactorCounter, router: router)
     }
     
     

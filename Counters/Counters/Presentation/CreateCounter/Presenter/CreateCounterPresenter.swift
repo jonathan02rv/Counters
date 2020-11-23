@@ -14,16 +14,25 @@ protocol CreateCounterPresenterProtocol{
 
 class CreateCounterPresenter{
     private weak var view: CreateCounterViewControllerProtocol?
+    private var interactorStorageData :StorageDataInteractorProtocol!
     private var interactorCounter: CounterInteractorProtocol!
     private var router: CreateCounterRouterProtocol!
     
-    init(view:CreateCounterViewControllerProtocol?, interactorCounter: CounterInteractorProtocol!, router: CreateCounterRouterProtocol!) {
+    init(view:CreateCounterViewControllerProtocol?, interactorStorageData :StorageDataInteractorProtocol!, interactorCounter: CounterInteractorProtocol!, router: CreateCounterRouterProtocol!) {
         self.view = view
+        self.interactorStorageData = interactorStorageData
         self.interactorCounter = interactorCounter
         self.router = router
     }
 }
 
+extension CreateCounterPresenter{
+    
+    func saveListCounters(counters: [CounterModel]){
+        interactorStorageData.saveListCounters(counters: counters)
+    }
+
+}
 
 extension CreateCounterPresenter:CreateCounterPresenterProtocol{
     func saveNewCounnter(counterTitle:String) {

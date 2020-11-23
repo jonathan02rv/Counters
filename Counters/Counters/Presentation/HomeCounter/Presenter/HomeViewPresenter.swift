@@ -31,6 +31,7 @@ protocol HomeViewPresenterProtocol{
 
 class HomeViewPresenter{
     private weak var view: HomeViewControllerProtocol?
+    private var interactorStorageData :StorageDataInteractorProtocol!
     private var interactorCounter: CounterInteractorProtocol!
     private var router: HomeViewRouterProtocol!
     
@@ -38,11 +39,27 @@ class HomeViewPresenter{
     var homeData = [CounterModel]()
     var filterData = [CounterModel]()
     
-    init(view: HomeViewControllerProtocol?, router: HomeViewRouterProtocol, interactorCounter: CounterInteractorProtocol) {
+    init(view: HomeViewControllerProtocol?, interactorStorageData :StorageDataInteractorProtocol!, router: HomeViewRouterProtocol, interactorCounter: CounterInteractorProtocol) {
         self.view = view
+        self.interactorStorageData = interactorStorageData
         self.router = router
         self.interactorCounter = interactorCounter
     }
+}
+
+extension HomeViewPresenter{
+    func saveListCounters(counters: [CounterModel]){
+        interactorStorageData.saveListCounters(counters: counters)
+    }
+    
+    func updateStorageCounter(counter: CounterModel){
+        interactorStorageData.updateStorageCounter(counter: counter)
+    }
+    
+    func getAllStorageCounters()->[CounterModel]{
+        interactorStorageData.getAllStorageCounters()
+    }
+
 }
 
 extension HomeViewPresenter: HomeViewPresenterProtocol{
