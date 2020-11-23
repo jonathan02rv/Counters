@@ -27,6 +27,12 @@ protocol HomeViewPresenterProtocol{
     func getNumberOfRowErrorData()->Int
     func hasErrorHome()->Bool
     func getMessageDataCell(row:Int)->ErrorHomeViewData
+    
+    
+    //MARK: - Delete Methods
+    func appendSelect(indexPaths:[IndexPath])
+    func removeAllSelected()
+    func selectedAllFillData()
 }
 
 class HomeViewPresenter{
@@ -35,6 +41,7 @@ class HomeViewPresenter{
     private var interactorCounter: CounterInteractorProtocol!
     private var router: HomeViewRouterProtocol!
     
+    var selectData = [CounterModel]()
     var errorData = [ErrorHomeViewData]()
     var homeData = [CounterModel]()
     var filterData = [CounterModel]()
@@ -61,6 +68,25 @@ extension HomeViewPresenter{
         interactorStorageData.updateStorageCounter(counter: counter)
     }
     
+}
+
+//MARK: - Delete Methods
+extension HomeViewPresenter{
+    func appendSelect(indexPaths:[IndexPath]){
+        for indexPath in indexPaths{
+            selectData.append(homeData[indexPath.row])
+        }
+        
+        print(selectData)
+    }
+    
+    func selectedAllFillData(){
+        self.selectData = self.homeData
+    }
+    
+    func removeAllSelected(){
+        self.selectData.removeAll()
+    }
 }
 
 //MARK: - Implement Protocol

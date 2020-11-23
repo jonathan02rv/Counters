@@ -45,11 +45,55 @@ class HomeViewController: UITableViewController {
     }
     
     private func setupItemsBar(){
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit".localized, style: .plain, target: self, action: #selector(editTapped(sender:)))
     }
     
-    @objc func editTapped(){
+    @objc func editTapped(sender:UIBarButtonItem){
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.tableView.isEditing = !self.tableView.isEditing
+            
+            if self.tableView.isEditing{
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SelectAll".localized, style: .plain, target: self, action: #selector(self.selectAllTapped(sender:)))
+                sender.title = "Done".localized
+            }else{
+                sender.title = "Edit".localized
+                self.navigationItem.rightBarButtonItem = nil
+            }
+            
+            
+        })
+        
         print("Save counter")
+    }
+    
+    @objc func selectAllTapped(sender:UIBarButtonItem){
+        
+        let allCounters = presenter.getDataArray()
+        guard allCounters.count > 0 else{return}
+        var rowItem = -1
+
+        guard sender.tag == 0 else{
+            allCounters.forEach {
+                print($0)
+                rowItem += 1
+                self.tableView.deselectRow(at: IndexPath(row: rowItem, section: 0), animated: true)
+            }
+            presenter.removeAllSelected()
+            sender.title = "SelectAll".localized
+            sender.tag = 0
+            return
+        }
+        
+        allCounters.forEach {
+            print($0)
+            rowItem += 1
+            self.tableView.selectRow(at: IndexPath(row: rowItem, section: 0), animated: true, scrollPosition: .none)
+            
+        }
+        presenter.selectedAllFillData()
+        sender.title = "DeselectAll".localized
+        sender.tag = 1
     }
     
     private func setupNavigation(){
@@ -61,6 +105,8 @@ class HomeViewController: UITableViewController {
     
     
     private func setupTable(){
+        tableView.allowsMultipleSelectionDuringEditing = true
+        self.view.tintColor = .primaryOrangeColorApp
         let nib = UINib(nibName: tableViewCellName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: tableViewCellIdentifier)
         
@@ -68,7 +114,6 @@ class HomeViewController: UITableViewController {
         tableView.register(nibMessage, forCellReuseIdentifier: "messageHomeTableViewCell")
         
         tableView.separatorStyle = .none
-        tableView.allowsSelection = false
         tableView.backgroundColor = .primaryGraceColorApp
         
         refreshControl = UIRefreshControl()
@@ -134,7 +179,6 @@ extension HomeViewController{
         
     }
     
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch presenter.hasErrorHome() {
         case false:
@@ -144,8 +188,28 @@ extension HomeViewController{
         }
     }
     
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("TAP")
+        self.selectDeselectCell(tableView: tableView, indexPath: indexPath)
+        print("select")
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.selectDeselectCell(tableView: tableView, indexPath: indexPath)
+        print("DESELECT")
+    }
+    
+    
+    private func selectDeselectCell(tableView: UITableView, indexPath: IndexPath){
+        presenter.removeAllSelected()
+        if let indexs = tableView.indexPathsForSelectedRows{
+            presenter.appendSelect(indexPaths:indexs)
+        }
     }
     
 }

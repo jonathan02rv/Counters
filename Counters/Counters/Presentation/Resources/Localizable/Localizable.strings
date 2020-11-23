@@ -26,7 +26,11 @@
 "ExampleTextCrateCounter" = "Give it a name. Creative block? See ";
 "ExamplesTextTap" = "examples.";
 "PlaceHolderCrateCounter" = "Cups of coffee";
-
+//MARK: - Delete Counter
+"Edit" = "Edit";
+"Done" = "Done";
+"SelectAll" = "Select All";
+"DeselectAll" = "Deselect All";
 //MARK: - ERROS
 "defaultError" = "Something went wrong, we couldn't connect.";
 "networkConnectionError" = "The Internet connection appears to be offline.";
