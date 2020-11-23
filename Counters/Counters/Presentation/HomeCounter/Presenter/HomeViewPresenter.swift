@@ -155,6 +155,7 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
 //MARK: - Call Services
 extension HomeViewPresenter{
     func getListCounters(){
+        self.view?.enableEditCounter(isEnable: true)
         setEmptyErrorHome()
         self.interactorCounter.getCountersAll { [weak self](result) in
             guard let sweak = self else {return}
@@ -265,6 +266,7 @@ extension HomeViewPresenter{
     }
     
     func setErrorHomeData(tymeMessage: CustomMessageType){
+        self.view?.enableEditCounter(isEnable: false)
         switch tymeMessage {
         case .emptyCounters:
             let errorData = ErrorHomeViewData(title: "NoCountersYet".localized, description: "NoCountersYetMessage".localized, titleButton: "CreateAccountTitleBtn".localized, typeMessage: tymeMessage)

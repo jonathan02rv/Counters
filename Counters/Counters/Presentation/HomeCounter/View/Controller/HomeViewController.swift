@@ -11,6 +11,7 @@ protocol HomeViewControllerProtocol:class, ViewProtocol{
     func reloadData()
     func reloadDataFilter()
     func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),homeData: CounterModel, value: Int)
+    func enableEditCounter(isEnable: Bool)
 }
 
 class HomeViewController: UITableViewController {
@@ -40,6 +41,15 @@ class HomeViewController: UITableViewController {
         presenter.loadData()
         setupTable()
         setupSearchView()
+        setupItemsBar()
+    }
+    
+    private func setupItemsBar(){
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
+    }
+    
+    @objc func editTapped(){
+        print("Save counter")
     }
     
     private func setupNavigation(){
@@ -156,6 +166,10 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating{
 }
 
 extension HomeViewController: HomeViewControllerProtocol{
+    func enableEditCounter(isEnable: Bool) {
+        navigationItem.leftBarButtonItem?.isEnabled = isEnable
+    }
+    
     func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),homeData: CounterModel, value: Int){
         self.showCounterAlert(typeAlert: typeAlert, messageData: messageData, action: { actionTest in
             self.presenter.callRetryService(typeError: typeAlert,homeData: homeData, value: value)
