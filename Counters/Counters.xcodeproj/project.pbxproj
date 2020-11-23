@@ -60,6 +60,7 @@
 		9A60D9F6256B346500C9272C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9F5256B346500C9272C /* DatabaseManager.swift */; };
 		9A60D9FB256B43DA00C9272C /* StorageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9FA256B43DA00C9272C /* StorageDataRepository.swift */; };
 		9A60DA00256B441400C9272C /* StorageDataRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9FF256B441400C9272C /* StorageDataRepositoryProtocol.swift */; };
+		9A60DA06256B466600C9272C /* StorageDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DA05256B466600C9272C /* StorageDataInteractor.swift */; };
 		9A89A3AB25675C7C00B7A05D /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3A925675C7C00B7A05D /* WelcomeTableViewCell.swift */; };
 		9A89A3AC25675C7C00B7A05D /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A89A3AA25675C7C00B7A05D /* WelcomeTableViewCell.xib */; };
 		9A89A3B725675E4E00B7A05D /* WelcomeCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */; };
@@ -151,6 +152,7 @@
 		9A60D9F5256B346500C9272C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		9A60D9FA256B43DA00C9272C /* StorageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDataRepository.swift; sourceTree = "<group>"; };
 		9A60D9FF256B441400C9272C /* StorageDataRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDataRepositoryProtocol.swift; sourceTree = "<group>"; };
+		9A60DA05256B466600C9272C /* StorageDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDataInteractor.swift; sourceTree = "<group>"; };
 		9A89A3A925675C7C00B7A05D /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		9A89A3AA25675C7C00B7A05D /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCounterController.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				9A22B93E2565F4610024E81A /* Interactor.swift */,
+				9A60DA04256B464D00C9272C /* Storage */,
 				9A22B9432565F4810024E81A /* Services */,
 			);
 			path = Interactor;
@@ -673,6 +676,14 @@
 				9A60D9F5256B346500C9272C /* DatabaseManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		9A60DA04256B464D00C9272C /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				9A60DA05256B466600C9272C /* StorageDataInteractor.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		9A89A3A725675C4900B7A05D /* Controller */ = {
@@ -929,6 +940,7 @@
 				9A60D9CB256AFB4600C9272C /* CreateCounterConfigurator.swift in Sources */,
 				9A22B96C2566B4BF0024E81A /* FontsApp.swift in Sources */,
 				9A53FF0025674D8A000E4346 /* WelcomeCounterConfigurator.swift in Sources */,
+				9A60DA06256B466600C9272C /* StorageDataInteractor.swift in Sources */,
 				9A22B8F02565C8390024E81A /* TimberjackHelper.swift in Sources */,
 				9A22B8FD2565CB470024E81A /* ServiceDataSourceProtocol.swift in Sources */,
 				9A22B8872564FC2E0024E81A /* AppDelegate.swift in Sources */,
