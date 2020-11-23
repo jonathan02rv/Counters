@@ -43,6 +43,7 @@ extension CreateCounterPresenter:CreateCounterPresenterProtocol{
             switch result{
             case .success(let data):
                 print(data)
+                sweak.saveListCounters(counters: data)
                 sweak.view?.clearInputText()
                 break
             case .failure(let error):

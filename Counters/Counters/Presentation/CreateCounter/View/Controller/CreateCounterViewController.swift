@@ -77,7 +77,7 @@ class CreateCounterViewController: UIViewController {
     
     @objc func saveTapped(){
         guard let titleCounter = txtCounterTitle.text, !titleCounter.isEmpty else{return}
-        presenter.saveNewCounnter(counterTitle: titleCounter)
+        presenter.saveNewCounnter(counterTitle: titleCounter.lowercased())
         print("Save counter")
     }
 }

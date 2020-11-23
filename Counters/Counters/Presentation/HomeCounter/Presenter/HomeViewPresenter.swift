@@ -47,21 +47,23 @@ class HomeViewPresenter{
     }
 }
 
+//MARK: - Core Data Methods
 extension HomeViewPresenter{
     func saveListCounters(counters: [CounterModel]){
         interactorStorageData.saveListCounters(counters: counters)
+    }
+    
+    func getAllStorageCounters(){
+        self.homeData = interactorStorageData.getAllStorageCounters()
     }
     
     func updateStorageCounter(counter: CounterModel){
         interactorStorageData.updateStorageCounter(counter: counter)
     }
     
-    func getAllStorageCounters()->[CounterModel]{
-        interactorStorageData.getAllStorageCounters()
-    }
-
 }
 
+//MARK: - Implement Protocol
 extension HomeViewPresenter: HomeViewPresenterProtocol{
     
     func goToCreateCounter(){
@@ -147,6 +149,11 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
         getListCounters()
     }
     
+    
+}
+
+//MARK: - Call Services
+extension HomeViewPresenter{
     func getListCounters(){
         setEmptyErrorHome()
         self.interactorCounter.getCountersAll { [weak self](result) in
@@ -154,6 +161,8 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
             sweak.view?.finishLoading()
             switch result{
             case .success(let data):
+                sweak.saveListCounters(counters: data)
+                
                 sweak.homeData = data
                 
                 if data.count == 0{
@@ -163,7 +172,7 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
                 sweak.view?.reloadData()
                 break
             case .failure(let error):
-                
+                sweak.getAllStorageCounters()
                 if sweak.homeData.count == 0{
                     sweak.setErrorHomeData(tymeMessage: .loadCountersError)
                 }
@@ -175,11 +184,7 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
                     return
                 }
                 switch errorModel.type {
-                case .networkError:
-                    print("ERROR: \(errorModel.description ?? "")")
-                case .custom:
-                    print("ERROR: \(errorModel.description ?? "")")
-                case .unknownError:
+                case .networkError,.custom,.unknownError,.parseModel:
                     print("ERROR: \(errorModel.description ?? "")")
                 default:
                     break
@@ -188,16 +193,7 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
         }
     }
     
-    func setErrorHomeData(tymeMessage: CustomMessageType){
-        switch tymeMessage {
-        case .emptyCounters:
-            let errorData = ErrorHomeViewData(title: "NoCountersYet".localized, description: "NoCountersYetMessage".localized, titleButton: "CreateAccountTitleBtn".localized, typeMessage: tymeMessage)
-            self.errorData.append(errorData)
-        case .loadCountersError:
-            let errorData = ErrorHomeViewData(title: "ErrorLoadCounters".localized, description: "ErrorLoadCountersMessage".localized, titleButton: "retry".localized, typeMessage: tymeMessage)
-            self.errorData.append(errorData)
-        }
-    }
+    
     
     func incrementCounter(homeData: CounterModel, value: Int){
         self.view?.startLoading()
@@ -255,6 +251,8 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
         }
     }
     
+    
+    //MARK: - Support Methods
     func callRetryService(typeError: TypErrorCounter, homeData: CounterModel, value: Int) {
         switch typeError {
         case .increment:
@@ -263,6 +261,17 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
             self.decrementCounter(homeData: homeData, value: value)
         default:
             break
+        }
+    }
+    
+    func setErrorHomeData(tymeMessage: CustomMessageType){
+        switch tymeMessage {
+        case .emptyCounters:
+            let errorData = ErrorHomeViewData(title: "NoCountersYet".localized, description: "NoCountersYetMessage".localized, titleButton: "CreateAccountTitleBtn".localized, typeMessage: tymeMessage)
+            self.errorData.append(errorData)
+        case .loadCountersError:
+            let errorData = ErrorHomeViewData(title: "ErrorLoadCounters".localized, description: "ErrorLoadCountersMessage".localized, titleButton: "retry".localized, typeMessage: tymeMessage)
+            self.errorData.append(errorData)
         }
     }
 }
