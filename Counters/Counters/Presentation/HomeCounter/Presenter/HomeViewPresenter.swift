@@ -203,6 +203,7 @@ extension HomeViewPresenter{
             sweak.view?.finishLoading()
             switch result{
             case .success(let data):
+                sweak.saveListCounters(counters: data)
                 sweak.homeData = data
                 sweak.view?.reloadData()
                 break
@@ -231,6 +232,7 @@ extension HomeViewPresenter{
             sweak.view?.finishLoading()
             switch result{
             case .success(let data):
+                sweak.saveListCounters(counters: data)
                 sweak.homeData = data
                 sweak.view?.reloadData()
                 break

@@ -50,7 +50,7 @@ open class DatabaseManager{
         var allCounters = [CounterTb]()
 
         do {
-            all.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
+            all.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: true)]
             let fetched = try DatabaseManager.getContext().fetch(all)
             allCounters = fetched
         } catch {
