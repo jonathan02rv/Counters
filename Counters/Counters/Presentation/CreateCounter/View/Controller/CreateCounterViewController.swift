@@ -91,3 +91,9 @@ extension CreateCounterViewController: CreateCounterViewControllerProtocol{
         self.showCounterAlert(typeAlert: typeAlert, messageData: messageData, action: nil)
     }
 }
+
+extension CreateCounterViewController: ExampleCounterControllerDelegate{
+    func fillCounterField(title: String) {
+        self.txtCounterTitle.text = title
+    }
+}

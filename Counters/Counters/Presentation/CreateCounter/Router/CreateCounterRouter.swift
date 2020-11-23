@@ -24,11 +24,12 @@ class CreateCounterRouter{
 extension CreateCounterRouter:CreateCounterRouterProtocol{
     
     func routeToExampleView(){
-        guard let createCounterView = storyboard.instantiateViewController(withIdentifier: "exampleCounterController") as? ExampleCounterController, let view = currentView else { return }
+        guard let exampleCounterView = storyboard.instantiateViewController(withIdentifier: "exampleCounterController") as? ExampleCounterController, let view = currentView else { return }
+        exampleCounterView.delegate = view
         let backItem = UIBarButtonItem()
         backItem.title = "CreateBackText".localized
         view.navigationItem.backBarButtonItem = backItem
-        view.navigationController?.pushViewController(createCounterView, animated: true)
+        view.navigationController?.pushViewController(exampleCounterView, animated: true)
     }
     
     func routerToPrevius() {

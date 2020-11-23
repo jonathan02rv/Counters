@@ -22,6 +22,7 @@
 
 "ErrorLoadCounters" = "Couldn’t load the counters";
 "ErrorLoadCountersMessage" = "The Internet connection appears to be offline.";
+"ExampleMessageSubtitle" = "Select example to add it to your counters";
 
 //MARK: - Create Counter
 "CreateBackText" = "Create";

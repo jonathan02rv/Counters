@@ -42,6 +42,11 @@
 		9A308D24256BE91900036835 /* ExampleCounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D23256BE91900036835 /* ExampleCounterPresenter.swift */; };
 		9A308D29256BEA3800036835 /* ExampleCounterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D28256BEA3800036835 /* ExampleCounterRouter.swift */; };
 		9A308D2E256BEB8300036835 /* ExampleCounter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A308D2D256BEB8300036835 /* ExampleCounter.storyboard */; };
+		9A308D42256BFC8000036835 /* ExampleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D40256BFC8000036835 /* ExampleCollectionViewCell.swift */; };
+		9A308D43256BFC8000036835 /* ExampleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A308D41256BFC8000036835 /* ExampleCollectionViewCell.xib */; };
+		9A308D4B256C0C5400036835 /* ViewDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D4A256C0C5300036835 /* ViewDesignable.swift */; };
+		9A308D53256C240900036835 /* ExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D51256C240900036835 /* ExampleTableViewCell.swift */; };
+		9A308D54256C240900036835 /* ExampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A308D52256C240900036835 /* ExampleTableViewCell.xib */; };
 		9A53FEA425671A98000E4346 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A53FEA325671A98000E4346 /* Extensions.swift */; };
 		9A53FEC2256728FA000E4346 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A53FEC1256728FA000E4346 /* SFProDisplay-Regular.ttf */; };
 		9A53FEC725672907000E4346 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A53FEC625672907000E4346 /* SFProDisplay-Bold.ttf */; };
@@ -79,6 +84,8 @@
 		9AB932C425677D520080FB6F /* HomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB932C325677D520080FB6F /* HomeViewPresenter.swift */; };
 		9AB932C925677D640080FB6F /* HomeViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB932C825677D640080FB6F /* HomeViewRouter.swift */; };
 		9AB932CF256787720080FB6F /* HomeViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB932CE256787720080FB6F /* HomeViewConfigurator.swift */; };
+		9AD7D04D256C3D520020DBED /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7D04B256C3D520020DBED /* HeaderTableViewCell.swift */; };
+		9AD7D04E256C3D520020DBED /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AD7D04C256C3D520020DBED /* HeaderTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +146,11 @@
 		9A308D23256BE91900036835 /* ExampleCounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCounterPresenter.swift; sourceTree = "<group>"; };
 		9A308D28256BEA3800036835 /* ExampleCounterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCounterRouter.swift; sourceTree = "<group>"; };
 		9A308D2D256BEB8300036835 /* ExampleCounter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExampleCounter.storyboard; sourceTree = "<group>"; };
+		9A308D40256BFC8000036835 /* ExampleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCollectionViewCell.swift; sourceTree = "<group>"; };
+		9A308D41256BFC8000036835 /* ExampleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExampleCollectionViewCell.xib; sourceTree = "<group>"; };
+		9A308D4A256C0C5300036835 /* ViewDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDesignable.swift; sourceTree = "<group>"; };
+		9A308D51256C240900036835 /* ExampleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTableViewCell.swift; sourceTree = "<group>"; };
+		9A308D52256C240900036835 /* ExampleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExampleTableViewCell.xib; sourceTree = "<group>"; };
 		9A53FEA325671A98000E4346 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9A53FEC1256728FA000E4346 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		9A53FEC625672907000E4346 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
@@ -176,6 +188,8 @@
 		9AB932C325677D520080FB6F /* HomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPresenter.swift; sourceTree = "<group>"; };
 		9AB932C825677D640080FB6F /* HomeViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewRouter.swift; sourceTree = "<group>"; };
 		9AB932CE256787720080FB6F /* HomeViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewConfigurator.swift; sourceTree = "<group>"; };
+		9AD7D04B256C3D520020DBED /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		9AD7D04C256C3D520020DBED /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -549,6 +563,7 @@
 		9A308D09256BE85300036835 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9A308D32256BFC2600036835 /* Cells */,
 				9A308D0D256BE87A00036835 /* Configurator */,
 				9A308D0C256BE87200036835 /* Controller */,
 			);
@@ -585,6 +600,34 @@
 				9A308D16256BE8C200036835 /* ExampleCounterConfigurator.swift */,
 			);
 			path = Configurator;
+			sourceTree = "<group>";
+		};
+		9A308D32256BFC2600036835 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9AD7D047256C3D240020DBED /* Header */,
+				9A308D50256C23D600036835 /* CollectionViewCell */,
+				9A308D4F256C23C900036835 /* TableViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9A308D4F256C23C900036835 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9A308D51256C240900036835 /* ExampleTableViewCell.swift */,
+				9A308D52256C240900036835 /* ExampleTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		9A308D50256C23D600036835 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9A308D40256BFC8000036835 /* ExampleCollectionViewCell.swift */,
+				9A308D41256BFC8000036835 /* ExampleCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		9A53FEA225671A86000E4346 /* Extensions */ = {
@@ -654,6 +697,7 @@
 			children = (
 				9A5D102525677013006A4E1A /* RoundedCornerButton.swift */,
 				9A60D9E1256B24D900C9272C /* DesignableTextField.swift */,
+				9A308D4A256C0C5300036835 /* ViewDesignable.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -839,6 +883,15 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
+		9AD7D047256C3D240020DBED /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				9AD7D04B256C3D520020DBED /* HeaderTableViewCell.swift */,
+				9AD7D04C256C3D520020DBED /* HeaderTableViewCell.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -953,12 +1006,15 @@
 				9A22B8932564FC320024E81A /* Assets.xcassets in Resources */,
 				9A53FEC2256728FA000E4346 /* SFProDisplay-Regular.ttf in Resources */,
 				9A60D97F256992FB00C9272C /* Localizable.strings in Resources */,
+				9A308D43256BFC8000036835 /* ExampleCollectionViewCell.xib in Resources */,
 				9AA5D9082568DAFE00A6D067 /* CounterTableViewCell.xib in Resources */,
 				9A53FEC725672907000E4346 /* SFProDisplay-Bold.ttf in Resources */,
 				9A89A3AC25675C7C00B7A05D /* WelcomeTableViewCell.xib in Resources */,
 				9A308D2E256BEB8300036835 /* ExampleCounter.storyboard in Resources */,
 				9A22B88E2564FC2E0024E81A /* Main.storyboard in Resources */,
 				9A60D9DD256AFCB000C9272C /* CreateCounter.storyboard in Resources */,
+				9A308D54256C240900036835 /* ExampleTableViewCell.xib in Resources */,
+				9AD7D04E256C3D520020DBED /* HeaderTableViewCell.xib in Resources */,
 				9A60D9A7256AD73300C9272C /* MessageHomeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -985,10 +1041,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AA5D8FA2568BC3800A6D067 /* FilterTableController.swift in Sources */,
+				9AD7D04D256C3D520020DBED /* HeaderTableViewCell.swift in Sources */,
 				9A22B9262565EA710024E81A /* ErrorModel.swift in Sources */,
 				9AB932CF256787720080FB6F /* HomeViewConfigurator.swift in Sources */,
 				9A22B8E22565C2E80024E81A /* RequestCounter.swift in Sources */,
 				9A308D24256BE91900036835 /* ExampleCounterPresenter.swift in Sources */,
+				9A308D42256BFC8000036835 /* ExampleCollectionViewCell.swift in Sources */,
 				9A22B8912564FC2E0024E81A /* Counters.xcdatamodeld in Sources */,
 				9AB932BF25677D370080FB6F /* HomeViewController.swift in Sources */,
 				9A60D9AD256AD91200C9272C /* HomeViewData.swift in Sources */,
@@ -997,6 +1055,7 @@
 				9A60D9CB256AFB4600C9272C /* CreateCounterConfigurator.swift in Sources */,
 				9A22B96C2566B4BF0024E81A /* FontsApp.swift in Sources */,
 				9A308D17256BE8C300036835 /* ExampleCounterConfigurator.swift in Sources */,
+				9A308D4B256C0C5400036835 /* ViewDesignable.swift in Sources */,
 				9A53FF0025674D8A000E4346 /* WelcomeCounterConfigurator.swift in Sources */,
 				9A60DA06256B466600C9272C /* StorageDataInteractor.swift in Sources */,
 				9A22B8F02565C8390024E81A /* TimberjackHelper.swift in Sources */,
@@ -1038,6 +1097,7 @@
 				9AB932C925677D640080FB6F /* HomeViewRouter.swift in Sources */,
 				9A22B95E2566AFD90024E81A /* ColorPalette.swift in Sources */,
 				9A22B9672566B33E0024E81A /* Utils.swift in Sources */,
+				9A308D53256C240900036835 /* ExampleTableViewCell.swift in Sources */,
 				9A60D9E2256B24DB00C9272C /* DesignableTextField.swift in Sources */,
 				9A308D29256BEA3800036835 /* ExampleCounterRouter.swift in Sources */,
 				9A89A3BC25675FF800B7A05D /* ViewData.swift in Sources */,
