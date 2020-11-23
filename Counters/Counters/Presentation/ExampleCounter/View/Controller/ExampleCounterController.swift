@@ -20,19 +20,22 @@ class ExampleCounterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        setupNavigation()
+    }
+    
+    private func setupNavigation(){
+        self.view.backgroundColor = .primaryGraceColorApp
+        self.navigationItem.largeTitleDisplayMode = .never
+        self.title = "ExampleTitle".localized
     }
     
     private func initView(){
         self.configurator.configure(controller: self)
-
     }
-
 
 }
 

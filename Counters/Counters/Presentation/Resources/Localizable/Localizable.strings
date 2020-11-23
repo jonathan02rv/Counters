@@ -18,13 +18,16 @@
 "NoCountersYet" = "No counters Yet";
 "NoCountersYetMessage" = "When I started counting my blessings, my whole life turned around.";
 "CreateAccountTitleBtn" = "Create a counter";
+"CreateCounterViewTitle" = "Create a counter";
 
 "ErrorLoadCounters" = "Couldn’t load the counters";
 "ErrorLoadCountersMessage" = "The Internet connection appears to be offline.";
 
 //MARK: - Create Counter
+"CreateBackText" = "Create";
 "ExampleTextCrateCounter" = "Give it a name. Creative block? See ";
 "ExamplesTextTap" = "examples.";
+"ExampleTitle" = "Examples";
 "PlaceHolderCrateCounter" = "Cups of coffee";
 //MARK: - Delete Counter
 "Edit" = "Edit";

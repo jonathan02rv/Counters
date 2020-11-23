@@ -10,6 +10,7 @@ import Foundation
 protocol CreateCounterPresenterProtocol{
     func routerToPrevius()
     func saveNewCounnter(counterTitle:String)
+    func goToExampleView()
 }
 
 class CreateCounterPresenter{
@@ -35,6 +36,11 @@ extension CreateCounterPresenter{
 }
 
 extension CreateCounterPresenter:CreateCounterPresenterProtocol{
+    
+    func goToExampleView() {
+        router.routeToExampleView()
+    }
+    
     func saveNewCounnter(counterTitle:String) {
         
         interactorCounter.createCounter(counterTitle: counterTitle) { [weak self](result) in

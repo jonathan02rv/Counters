@@ -48,6 +48,7 @@ class CreateCounterViewController: UIViewController {
         lblExampleTitle.setCustomFont(size: .s17, color: .thirdGraceColorApp, customFont: .regular)
         
         let exampleTapAction = UITapGestureRecognizer(target: self, action: #selector(self.exampleTap(sender:)))
+        self.lblExampleTitle.isUserInteractionEnabled = true
         lblExampleTitle.addGestureRecognizer(exampleTapAction)
         
         var attributedStart = NSMutableAttributedString()
@@ -63,22 +64,20 @@ class CreateCounterViewController: UIViewController {
     private func setupNavigation(){
         self.view.backgroundColor = .primaryGraceColorApp
         self.navigationItem.largeTitleDisplayMode = .never
-        self.title = "Create a counter"
+        self.title = "CreateCounterViewTitle".localized
     }
     
     @objc func exampleTap(sender:UITapGestureRecognizer){
-        print("Save counter")
+        presenter.goToExampleView()
     }
     
     @objc func cancelTapped(){
         presenter.routerToPrevius()
-        print("Save counter")
     }
     
     @objc func saveTapped(){
         guard let titleCounter = txtCounterTitle.text, !titleCounter.isEmpty else{return}
         presenter.saveNewCounnter(counterTitle: titleCounter.lowercased())
-        print("Save counter")
     }
 }
 
