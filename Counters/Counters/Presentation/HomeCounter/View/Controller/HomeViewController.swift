@@ -294,7 +294,7 @@ extension HomeViewController: HomeViewControllerProtocol{
         self.tableView.reloadData()
     }
     
-    //MARK: - TEST
+    //MARK: - LOADING
     func startLoading() {
         self.showActivity()
     }

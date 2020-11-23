@@ -42,10 +42,10 @@ extension CreateCounterPresenter:CreateCounterPresenterProtocol{
     }
     
     func saveNewCounnter(counterTitle:String) {
-        
+        view?.startLoading()
         interactorCounter.createCounter(counterTitle: counterTitle) { [weak self](result) in
             guard let sweak = self else{return}
-            
+            sweak.view?.finishLoading()
             switch result{
             case .success(let data):
                 print(data)

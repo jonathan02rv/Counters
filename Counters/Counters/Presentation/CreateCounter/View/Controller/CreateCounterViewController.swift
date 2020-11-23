@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CreateCounterViewControllerProtocol:class{
+protocol CreateCounterViewControllerProtocol:class,ViewProtocol{
     func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String))
     func clearInputText()
 }
@@ -59,6 +59,7 @@ class CreateCounterViewController: UIViewController {
         attributedStart.append(attributedEnd)
         
         lblExampleTitle.attributedText = attributedStart
+        enableSaveCounter(isEnable: false)
     }
     
     private func setupNavigation(){
@@ -79,6 +80,10 @@ class CreateCounterViewController: UIViewController {
         guard let titleCounter = txtCounterTitle.text, !titleCounter.isEmpty else{return}
         presenter.saveNewCounnter(counterTitle: titleCounter.lowercased())
     }
+    
+    func enableSaveCounter(isEnable: Bool) {
+        navigationItem.rightBarButtonItem?.isEnabled = isEnable
+    }
 }
 
 extension CreateCounterViewController: CreateCounterViewControllerProtocol{
@@ -90,10 +95,30 @@ extension CreateCounterViewController: CreateCounterViewControllerProtocol{
     func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String)){
         self.showCounterAlert(typeAlert: typeAlert, messageData: messageData, action: nil)
     }
+    
+    //MARK: - LOADING
+    func startLoading() {
+        self.showActivity()
+    }
+    
+    func finishLoading(){
+        self.hideActivity()
+    }
 }
 
 extension CreateCounterViewController: ExampleCounterControllerDelegate{
     func fillCounterField(title: String) {
         self.txtCounterTitle.text = title
     }
+}
+
+
+extension CreateCounterViewController:UITextFieldDelegate{
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let textValidate = textField.text else{return}
+        self.enableSaveCounter(isEnable: (textValidate.count>0))
+    }
+    
+    
+
 }

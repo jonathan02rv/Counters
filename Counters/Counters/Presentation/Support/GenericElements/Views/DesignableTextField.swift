@@ -33,11 +33,6 @@ class DesignableTextField: UITextField{
             self.borderStyle = .none
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
             self.leftView = view
-//            let imageView = UIImageView()
-//            let image = UIImage(named: "imgLoading")
-//            imageView.image = image
-//            imageView.frame = CGRect(x: 5, y: 0, width: self.frame.height, height: self.frame.height)
-//            self.leftView = imageView
             
             self.backgroundColor = UIColor(named: ColorsApp.primaryWhiteColorApp.rawValue)
             self.tintColor = UIColor(named: ColorsApp.primaryOrangeColorApp.rawValue)
