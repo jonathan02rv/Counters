@@ -37,10 +37,7 @@ extension WelcomeCounterRouter: WelcomeCounterRouterProtocol{
         homeView.navigationItem.title = "Counters"
         navController.tabBarItem.title = "Corner Shop"
         
-        let tabController = UITabBarController()
-        tabController.viewControllers = [navController]
-        
-        keyWindow.rootViewController = tabController
+        keyWindow.rootViewController = navController
     }
     
 

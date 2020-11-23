@@ -33,6 +33,7 @@ protocol HomeViewPresenterProtocol{
     func appendSelect(indexPaths:[IndexPath])
     func removeAllSelected()
     func selectedAllFillData()
+    func coolDispatchFunctionDelete()
 }
 
 class HomeViewPresenter{
@@ -46,12 +47,18 @@ class HomeViewPresenter{
     var homeData = [CounterModel]()
     var filterData = [CounterModel]()
     
+    var arrayCallServices = [(() -> Void)]()
+    
+    var queue = OperationQueue()
+    
     init(view: HomeViewControllerProtocol?, interactorStorageData :StorageDataInteractorProtocol!, router: HomeViewRouterProtocol, interactorCounter: CounterInteractorProtocol) {
         self.view = view
         self.interactorStorageData = interactorStorageData
         self.router = router
         self.interactorCounter = interactorCounter
     }
+    
+    
 }
 
 //MARK: - Core Data Methods
@@ -72,11 +79,9 @@ extension HomeViewPresenter{
 
 //MARK: - Delete Methods
 extension HomeViewPresenter{
+    
     func appendSelect(indexPaths:[IndexPath]){
-        for indexPath in indexPaths{
-            selectData.append(homeData[indexPath.row])
-        }
-        
+        indexPaths.forEach {selectData.append(homeData[$0.row])}
         print(selectData)
     }
     
@@ -180,6 +185,106 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
 
 //MARK: - Call Services
 extension HomeViewPresenter{
+    
+    func coolDispatchFunctionDelete() {
+        
+        guard selectData.count > 0 else{return}
+        let radQueue = OperationQueue()
+        setEmptyErrorHome()
+        
+        guard selectData.count > 1 else{
+            if selectData.count == 1{
+                self.deleteOneCounter(idCounter: selectData[0].id)
+            }
+            return
+        }
+        
+        let operation = BlockOperation{
+            let group = DispatchGroup()
+            
+            for index in 0..<self.selectData.count{
+                group.enter()
+                self.interactorCounter.deteleCounter(counterId: self.selectData[index].id) { [weak self](result) in
+                    guard let sweak = self else{return}
+                    switch result{
+                    case .success(let data):
+                        
+                        if index == (sweak.selectData.count - 1) {
+                            DispatchQueue.main.async {
+                                sweak.saveListCounters(counters: data)
+                                sweak.homeData = data
+                                if data.count == 0{
+                                    sweak.setErrorHomeData(tymeMessage: .emptyCounters)
+                                }
+                                sweak.view?.reloadData()
+                            }
+                        }
+                        
+                        
+                    case .failure(let error):
+                        
+                        if index == (sweak.selectData.count - 1){
+                            DispatchQueue.main.async{
+                                sweak.getAllStorageCounters()
+                                if sweak.homeData.count == 0{
+                                    sweak.setErrorHomeData(tymeMessage: .loadCountersError)
+                                }
+                                sweak.view?.reloadData()
+                                guard let errorModel =  error as? ErrorModel else {
+                                    print("ERROR: \(error.localizedDescription)")
+                                    return
+                                }
+                                switch errorModel.type {
+                                case .networkError,.custom,.unknownError,.parseModel:
+                                    print("ERROR: \(errorModel.description ?? "")")
+                                default:
+                                    print(error)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            group.wait()
+        }
+        radQueue.addOperation(operation)
+    }
+    
+    func deleteOneCounter(idCounter:String){
+        self.interactorCounter.deteleCounter(counterId: idCounter) { [weak self](result) in
+            guard let sweak = self else {return}
+            switch result{
+            case .success(let data):
+                sweak.saveListCounters(counters: data)
+                sweak.homeData = data
+                if data.count == 0{
+                    sweak.setErrorHomeData(tymeMessage: .emptyCounters)
+                }
+                sweak.view?.reloadData()
+                print(data)
+            case .failure(let error):
+                sweak.getAllStorageCounters()
+                if sweak.homeData.count == 0{
+                    sweak.setErrorHomeData(tymeMessage: .loadCountersError)
+                }
+                sweak.view?.reloadData()
+                guard let errorModel =  error as? ErrorModel else {
+                    print("ERROR: \(error.localizedDescription)")
+                    return
+                }
+                switch errorModel.type {
+                case .networkError,.custom,.unknownError,.parseModel:
+                    print("ERROR: \(errorModel.description ?? "")")
+                default:
+                    print(error)
+                }
+                
+            }
+            
+        }
+    }
+    
+    
     func getListCounters(){
         self.view?.enableEditCounter(isEnable: true)
         setEmptyErrorHome()
@@ -297,6 +402,7 @@ extension HomeViewPresenter{
         self.view?.enableEditCounter(isEnable: false)
         switch tymeMessage {
         case .emptyCounters:
+            self.view?.editCancell()
             let errorData = ErrorHomeViewData(title: "NoCountersYet".localized, description: "NoCountersYetMessage".localized, titleButton: "CreateAccountTitleBtn".localized, typeMessage: tymeMessage)
             self.errorData.append(errorData)
         case .loadCountersError:

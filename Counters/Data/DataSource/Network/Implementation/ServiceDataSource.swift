@@ -96,7 +96,6 @@ class ServiceDataSource: ServiceDataSourceProtocol{
                         return completion(.failure(ServiceErrorHandler.getParseError()))
                     }
                     completion(.success(dataResponse))
-                    break
                 case .failure(let error):
                     guard let data = response.data , let serviceError =  try? JSONDecoder().decode(BaseResponseEntity.self, from: data)  else {
                         return completion(.failure(ServiceErrorHandler.get(code: nil, description: error.localizedDescription)))

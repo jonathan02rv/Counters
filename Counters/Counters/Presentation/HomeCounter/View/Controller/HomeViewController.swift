@@ -12,6 +12,7 @@ protocol HomeViewControllerProtocol:class, ViewProtocol{
     func reloadDataFilter()
     func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),homeData: CounterModel, value: Int)
     func enableEditCounter(isEnable: Bool)
+    func editCancell()
 }
 
 class HomeViewController: UITableViewController {
@@ -46,23 +47,59 @@ class HomeViewController: UITableViewController {
     
     private func setupItemsBar(){
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit".localized, style: .plain, target: self, action: #selector(editTapped(sender:)))
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(sender:)))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolbarItems = [spacer,add]
+        navigationController?.view.tintColor = .primaryOrangeColorApp
+        navigationController?.setToolbarHidden(false, animated: false)
+
+    }
+    
+    @objc func addTapped(sender:UIBarButtonItem){
+        
+        print(sender.tag)
+        
+        presenter.goToCreateCounter()
+    }
+    
+    @objc func forwardTapped(sender:UIBarButtonItem){
+        
+        print(sender.tag)
+        
+    }
+    
+    @objc func trashTapped(){
+        presenter.coolDispatchFunctionDelete()
+        print("Trash")
     }
     
     @objc func editTapped(sender:UIBarButtonItem){
         
+        
         UIView.animate(withDuration: 0.3, animations: {
             self.tableView.isEditing = !self.tableView.isEditing
-            
-            if self.tableView.isEditing{
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SelectAll".localized, style: .plain, target: self, action: #selector(self.selectAllTapped(sender:)))
-                sender.title = "Done".localized
-            }else{
-                sender.title = "Edit".localized
-                self.navigationItem.rightBarButtonItem = nil
-            }
-            
-            
         })
+        
+        if self.tableView.isEditing{
+            
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SelectAll".localized, style: .plain, target: self, action: #selector(self.selectAllTapped(sender:)))
+            sender.title = "Done".localized
+            self.toolbarItems?.remove(at: 1)
+            let trash = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(self.trashTapped))
+            self.toolbarItems?.insert(trash, at: 0)
+            
+            let shareItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(self.forwardTapped))
+            self.toolbarItems?.append(shareItem)
+            
+        }else{
+            sender.title = "Edit".localized
+            self.navigationItem.rightBarButtonItem = nil
+            self.toolbarItems?.remove(at: 2)
+            self.toolbarItems?.remove(at: 0)
+            let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addTapped(sender:)))
+            self.toolbarItems?.append(add)
+        }
         
         print("Save counter")
     }
@@ -100,7 +137,6 @@ class HomeViewController: UITableViewController {
         self.view.backgroundColor = .primaryGraceColorApp
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
-        self.title = "Counters"
     }
     
     
@@ -230,6 +266,11 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating{
 }
 
 extension HomeViewController: HomeViewControllerProtocol{
+    func editCancell() {
+        guard tableView.isEditing == true else{return}
+        editTapped(sender: navigationItem.leftBarButtonItem!)
+    }
+    
     func enableEditCounter(isEnable: Bool) {
         navigationItem.leftBarButtonItem?.isEnabled = isEnable
     }
