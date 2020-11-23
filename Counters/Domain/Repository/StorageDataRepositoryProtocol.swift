@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol StorageDataRepositoryProtocol:RepositoryProtocol{
-    func createNewCounter(counter: CounterModel)
+    func saveListCounters(counters: [CounterModel])
     func updateStorageCounter(counter: CounterModel)
     func getAllStorageCounters()->[CounterModel]
     func deleteCounter(forId counterId: String) -> Bool

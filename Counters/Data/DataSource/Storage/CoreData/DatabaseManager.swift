@@ -107,15 +107,15 @@ open class DatabaseManager{
     }
     
     // Create New Counter
-    func addNewCounterToCoreData(_ counter: CounterModel) {
-        
-        let entity = NSEntityDescription.entity(forEntityName: "CounterTb", in: DatabaseManager.getContext())
-        let newCounter = NSManagedObject(entity: entity!, insertInto: DatabaseManager.getContext())
-        newCounter.setValue(counter.id, forKey: "id")
-        newCounter.setValue(counter.title, forKey: "title")
-        newCounter.setValue(counter.count, forKey: "count")
-        newCounter.setValue(Date(), forKey: "createdAt")
-        DatabaseManager.saveContext()
+    func saveListCountersToCoreData(_ counters: [CounterModel]) {
+        for counter in counters{
+            let entity = NSEntityDescription.entity(forEntityName: "CounterTb", in: DatabaseManager.getContext())
+            let newCounter = NSManagedObject(entity: entity!, insertInto: DatabaseManager.getContext())
+            newCounter.setValue(counter.id, forKey: "id")
+            newCounter.setValue(counter.title, forKey: "title")
+            newCounter.setValue(counter.count, forKey: "count")
+            newCounter.setValue(Date(), forKey: "createdAt")
+        }
     }
     
     func upDateCounter(_ counter:CounterModel) {

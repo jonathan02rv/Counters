@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol StorageDataInteractorProtocol{
-    func createNewCounter(counter: CounterModel)
+    func saveListCounters(counters: [CounterModel])
     func updateStorageCounter(counter: CounterModel)
     func getAllStorageCounters()->[CounterModel]
     func deleteCounter(forId counterId: String) -> Bool
@@ -16,8 +16,8 @@ public protocol StorageDataInteractorProtocol{
 }
 
 public class StorageDataInteractor: Interactor, StorageDataInteractorProtocol{
-    public func createNewCounter(counter: CounterModel) {
-        (self.repository as! StorageDataRepositoryProtocol).createNewCounter(counter: counter)
+    public func saveListCounters(counters: [CounterModel]) {
+        (self.repository as! StorageDataRepositoryProtocol).saveListCounters(counters: counters)
     }
     
     public func updateStorageCounter(counter: CounterModel) {

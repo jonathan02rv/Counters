@@ -8,8 +8,10 @@
 import Foundation
 
 internal class StorageDataSource: StorageDataSourceProtocol{
-    func createNewCounter(counter: CounterModel) {
-        DatabaseManager.standard.addNewCounterToCoreData(counter)
+    func saveListCounters(counters: [CounterModel]) {
+        DatabaseManager.standard.deleteAllCounters()
+        DatabaseManager.standard.saveListCountersToCoreData(counters)
+        DatabaseManager.saveContext()
     }
     
     func updateStorageCounter(counter: CounterModel) {

@@ -15,8 +15,8 @@ public class StorageDataRepository: StorageDataRepositoryProtocol{
     }
     
     
-    public func createNewCounter(counter: CounterModel) {
-        dataSource.createNewCounter(counter: counter)
+    public func saveListCounters(counters: [CounterModel]) {
+        dataSource.saveListCounters(counters: counters)
     }
     
     public func updateStorageCounter(counter: CounterModel) {
