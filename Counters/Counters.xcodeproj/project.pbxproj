@@ -55,6 +55,11 @@
 		9A60D9D8256AFC1300C9272C /* CreateCounterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9D7256AFC1300C9272C /* CreateCounterRouter.swift */; };
 		9A60D9DD256AFCB000C9272C /* CreateCounter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A60D9DC256AFCB000C9272C /* CreateCounter.storyboard */; };
 		9A60D9E2256B24DB00C9272C /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9E1256B24D900C9272C /* DesignableTextField.swift */; };
+		9A60D9E9256B335000C9272C /* StorageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9E8256B334F00C9272C /* StorageDataSource.swift */; };
+		9A60D9F1256B336200C9272C /* StorageDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9F0256B336200C9272C /* StorageDataSourceProtocol.swift */; };
+		9A60D9F6256B346500C9272C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9F5256B346500C9272C /* DatabaseManager.swift */; };
+		9A60D9FB256B43DA00C9272C /* StorageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9FA256B43DA00C9272C /* StorageDataRepository.swift */; };
+		9A60DA00256B441400C9272C /* StorageDataRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60D9FF256B441400C9272C /* StorageDataRepositoryProtocol.swift */; };
 		9A89A3AB25675C7C00B7A05D /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3A925675C7C00B7A05D /* WelcomeTableViewCell.swift */; };
 		9A89A3AC25675C7C00B7A05D /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A89A3AA25675C7C00B7A05D /* WelcomeTableViewCell.xib */; };
 		9A89A3B725675E4E00B7A05D /* WelcomeCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */; };
@@ -141,6 +146,11 @@
 		9A60D9D7256AFC1300C9272C /* CreateCounterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCounterRouter.swift; sourceTree = "<group>"; };
 		9A60D9DC256AFCB000C9272C /* CreateCounter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCounter.storyboard; sourceTree = "<group>"; };
 		9A60D9E1256B24D900C9272C /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
+		9A60D9E8256B334F00C9272C /* StorageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDataSource.swift; sourceTree = "<group>"; };
+		9A60D9F0256B336200C9272C /* StorageDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDataSourceProtocol.swift; sourceTree = "<group>"; };
+		9A60D9F5256B346500C9272C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		9A60D9FA256B43DA00C9272C /* StorageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDataRepository.swift; sourceTree = "<group>"; };
+		9A60D9FF256B441400C9272C /* StorageDataRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDataRepositoryProtocol.swift; sourceTree = "<group>"; };
 		9A89A3A925675C7C00B7A05D /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		9A89A3AA25675C7C00B7A05D /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		9A89A3B625675E4E00B7A05D /* WelcomeCounterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCounterController.swift; sourceTree = "<group>"; };
@@ -301,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				9A22B9382565F08F0024E81A /* CounterRepository.swift */,
+				9A60D9FA256B43DA00C9272C /* StorageDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -308,6 +319,7 @@
 		9A22B8C62565BFC10024E81A /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				9A60D9E6256B330C00C9272C /* Storage */,
 				9A22B8C82565BFF70024E81A /* Network */,
 			);
 			path = DataSource;
@@ -448,6 +460,7 @@
 			isa = PBXGroup;
 			children = (
 				9A22B9302565EF700024E81A /* CounterRepositoryProtocol.swift */,
+				9A60D9FF256B441400C9272C /* StorageDataRepositoryProtocol.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -642,6 +655,24 @@
 				9A60D9CA256AFB4600C9272C /* CreateCounterConfigurator.swift */,
 			);
 			path = Configurator;
+			sourceTree = "<group>";
+		};
+		9A60D9E6256B330C00C9272C /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				9A60D9E7256B331F00C9272C /* CoreData */,
+				9A60D9E8256B334F00C9272C /* StorageDataSource.swift */,
+				9A60D9F0256B336200C9272C /* StorageDataSourceProtocol.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		9A60D9E7256B331F00C9272C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9A60D9F5256B346500C9272C /* DatabaseManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		9A89A3A725675C4900B7A05D /* Controller */ = {
@@ -908,6 +939,8 @@
 				9A22B9032565CDBD0024E81A /* CounterEntity.swift in Sources */,
 				9A22B8F62565CADC0024E81A /* Rechability.swift in Sources */,
 				9A5D102625677013006A4E1A /* RoundedCornerButton.swift in Sources */,
+				9A60D9FB256B43DA00C9272C /* StorageDataRepository.swift in Sources */,
+				9A60D9F1256B336200C9272C /* StorageDataSourceProtocol.swift in Sources */,
 				9A60D9D3256AFB8D00C9272C /* CreateCounterPresenter.swift in Sources */,
 				9A89A3C2256760C900B7A05D /* Protocols.swift in Sources */,
 				9A22B93F2565F4610024E81A /* Interactor.swift in Sources */,
@@ -917,9 +950,12 @@
 				9A22B9162565E99F0024E81A /* ServiceErrorHandler.swift in Sources */,
 				9A22B8D92565C1AE0024E81A /* HeadersRequest.swift in Sources */,
 				9A22B8E82565C7420024E81A /* Configuration.swift in Sources */,
+				9A60D9F6256B346500C9272C /* DatabaseManager.swift in Sources */,
 				9A60D96325695EA900C9272C /* Constants.swift in Sources */,
+				9A60DA00256B441400C9272C /* StorageDataRepositoryProtocol.swift in Sources */,
 				9A22B92B2565ECA70024E81A /* BaseResponseEntity.swift in Sources */,
 				9A53FEA425671A98000E4346 /* Extensions.swift in Sources */,
+				9A60D9E9256B335000C9272C /* StorageDataSource.swift in Sources */,
 				9A53FEF025674C52000E4346 /* WelcomeCounterPresenter.swift in Sources */,
 				9A60D9A6256AD73300C9272C /* MessageHomeTableViewCell.swift in Sources */,
 				9A22B9392565F08F0024E81A /* CounterRepository.swift in Sources */,
