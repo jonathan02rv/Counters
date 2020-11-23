@@ -35,6 +35,7 @@ protocol HomeViewPresenterProtocol{
     func selectedAllFillData()
     func coolDispatchFunctionDelete()
     func getCountSelected()->Int
+    func getDataForShare()->[String]
 }
 
 class HomeViewPresenter{
@@ -64,6 +65,15 @@ class HomeViewPresenter{
 
 //MARK: - Core Data Methods
 extension HomeViewPresenter{
+    
+    func getDataForShare()->[String]{
+        var dataShare = [String]()
+        for item in selectData{
+            dataShare.append("\(item.count)x\(item.title)")
+        }
+        return dataShare
+    }
+    
     func saveListCounters(counters: [CounterModel]){
         interactorStorageData.saveListCounters(counters: counters)
     }

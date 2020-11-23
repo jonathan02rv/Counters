@@ -63,10 +63,12 @@ class HomeViewController: UITableViewController {
         presenter.goToCreateCounter()
     }
     
-    @objc func forwardTapped(sender:UIBarButtonItem){
-        
-        print(sender.tag)
-        
+    @objc func shareTapped(sender:UIBarButtonItem){
+        let dataShare = presenter.getDataForShare()
+        guard dataShare.count > 0 else{return}
+        let activityVC = UIActivityViewController(activityItems: dataShare, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC,animated:true,completion:nil)
     }
     
     @objc func trashTapped(){
@@ -94,7 +96,7 @@ class HomeViewController: UITableViewController {
             let trash = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(self.trashTapped))
             self.toolbarItems?.insert(trash, at: 0)
             
-            let shareItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(self.forwardTapped))
+            let shareItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(self.shareTapped))
             self.toolbarItems?.append(shareItem)
             
         }else{
