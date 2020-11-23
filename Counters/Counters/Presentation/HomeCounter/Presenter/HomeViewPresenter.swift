@@ -20,7 +20,7 @@ protocol HomeViewPresenterProtocol{
     func getValueCount(row:Int)->Int
     func getValueFilterCount(row:Int)->Int
     func getListCounters()
-    func callRetryService(typeError: TypErrorCounter, homeData: CounterModel, value: Int)
+    func callRetryService(typeError: TypErrorCounter, counter: CounterModel, value: Int)
     func goToCreateCounter()
     
     
@@ -34,6 +34,7 @@ protocol HomeViewPresenterProtocol{
     func removeAllSelected()
     func selectedAllFillData()
     func coolDispatchFunctionDelete()
+    func getCountSelected()->Int
 }
 
 class HomeViewPresenter{
@@ -79,6 +80,10 @@ extension HomeViewPresenter{
 
 //MARK: - Delete Methods
 extension HomeViewPresenter{
+    
+    func getCountSelected()->Int{
+        return selectData.count
+    }
     
     func appendSelect(indexPaths:[IndexPath]){
         indexPaths.forEach {selectData.append(homeData[$0.row])}
@@ -129,9 +134,9 @@ extension HomeViewPresenter: HomeViewPresenterProtocol{
         guard let itemData = homeData.first(where: {$0.id == id}) else{return}
         let intValue = Int(value)
         if itemData.count < intValue{
-            incrementCounter(homeData: itemData, value: intValue)
+            incrementCounter(counter: itemData, value: intValue)
         }else{
-            decrementCounter(homeData: itemData, value: intValue)
+            decrementCounter(counter: itemData, value: intValue)
         }
     }
     
@@ -189,12 +194,13 @@ extension HomeViewPresenter{
     func coolDispatchFunctionDelete() {
         
         guard selectData.count > 0 else{return}
+        self.view?.startLoading()
         let radQueue = OperationQueue()
         setEmptyErrorHome()
         
         guard selectData.count > 1 else{
             if selectData.count == 1{
-                self.deleteOneCounter(idCounter: selectData[0].id)
+                self.deleteOneCounter(counter: selectData[0])
             }
             return
         }
@@ -211,6 +217,7 @@ extension HomeViewPresenter{
                         
                         if index == (sweak.selectData.count - 1) {
                             DispatchQueue.main.async {
+                                sweak.view?.finishLoading()
                                 sweak.saveListCounters(counters: data)
                                 sweak.homeData = data
                                 if data.count == 0{
@@ -225,21 +232,24 @@ extension HomeViewPresenter{
                         
                         if index == (sweak.selectData.count - 1){
                             DispatchQueue.main.async{
+                                sweak.view?.finishLoading()
                                 sweak.getAllStorageCounters()
                                 if sweak.homeData.count == 0{
                                     sweak.setErrorHomeData(tymeMessage: .loadCountersError)
                                 }
-                                sweak.view?.reloadData()
                                 guard let errorModel =  error as? ErrorModel else {
                                     print("ERROR: \(error.localizedDescription)")
                                     return
                                 }
                                 switch errorModel.type {
                                 case .networkError,.custom,.unknownError,.parseModel:
+                                    let strAppend = "selected"
+                                    sweak.view?.showAlert(typeAlert: .delete, messageData: (message: errorModel.description ?? "", strAppend: strAppend), counter: sweak.selectData[index], value: sweak.selectData[index].count)
                                     print("ERROR: \(errorModel.description ?? "")")
                                 default:
                                     print(error)
                                 }
+                                sweak.view?.reloadData()
                             }
                         }
                     }
@@ -250,9 +260,11 @@ extension HomeViewPresenter{
         radQueue.addOperation(operation)
     }
     
-    func deleteOneCounter(idCounter:String){
-        self.interactorCounter.deteleCounter(counterId: idCounter) { [weak self](result) in
+    
+    func deleteOneCounter(counter:CounterModel){
+        self.interactorCounter.deteleCounter(counterId: counter.id) { [weak self](result) in
             guard let sweak = self else {return}
+            sweak.view?.finishLoading()
             switch result{
             case .success(let data):
                 sweak.saveListCounters(counters: data)
@@ -261,24 +273,24 @@ extension HomeViewPresenter{
                     sweak.setErrorHomeData(tymeMessage: .emptyCounters)
                 }
                 sweak.view?.reloadData()
-                print(data)
             case .failure(let error):
                 sweak.getAllStorageCounters()
                 if sweak.homeData.count == 0{
                     sweak.setErrorHomeData(tymeMessage: .loadCountersError)
                 }
-                sweak.view?.reloadData()
                 guard let errorModel =  error as? ErrorModel else {
                     print("ERROR: \(error.localizedDescription)")
                     return
                 }
                 switch errorModel.type {
                 case .networkError,.custom,.unknownError,.parseModel:
+                    let strAppend = "\"\(counter.title)\""
+                    sweak.view?.showAlert(typeAlert: .delete, messageData: (message: errorModel.description ?? "", strAppend: strAppend), counter: counter, value: counter.count)
                     print("ERROR: \(errorModel.description ?? "")")
                 default:
                     print(error)
                 }
-                
+                sweak.view?.reloadData()
             }
             
         }
@@ -294,23 +306,17 @@ extension HomeViewPresenter{
             switch result{
             case .success(let data):
                 sweak.saveListCounters(counters: data)
-                
                 sweak.homeData = data
-                
                 if data.count == 0{
                     sweak.setErrorHomeData(tymeMessage: .emptyCounters)
                 }
-                
                 sweak.view?.reloadData()
-                break
             case .failure(let error):
                 sweak.getAllStorageCounters()
                 if sweak.homeData.count == 0{
                     sweak.setErrorHomeData(tymeMessage: .loadCountersError)
                 }
-                sweak.view?.reloadData()
                 print("\(error)")
-                
                 guard let errorModel =  error as? ErrorModel else {
                     print("ERROR: \(error.localizedDescription)")
                     return
@@ -321,15 +327,16 @@ extension HomeViewPresenter{
                 default:
                     break
                 }
+                sweak.view?.reloadData()
             }
         }
     }
     
     
     
-    func incrementCounter(homeData: CounterModel, value: Int){
+    func incrementCounter(counter: CounterModel, value: Int){
         self.view?.startLoading()
-        interactorCounter.incrementCounter(counterId: homeData.id) { [weak self](result) in
+        interactorCounter.incrementCounter(counterId: counter.id) { [weak self](result) in
             guard let sweak = self else {return}
             sweak.view?.finishLoading()
             switch result{
@@ -337,7 +344,6 @@ extension HomeViewPresenter{
                 sweak.saveListCounters(counters: data)
                 sweak.homeData = data
                 sweak.view?.reloadData()
-                break
             case .failure(let error):
                 print("\(error)")
                 guard let errorModel =  error as? ErrorModel else {
@@ -346,8 +352,8 @@ extension HomeViewPresenter{
                 }
                 switch errorModel.type {
                 case .networkError,.custom,.unknownError,.parseModel:
-                    let strAppend = "\"\(homeData.title)\"\("counterTo".localized)\(value)"
-                    sweak.view?.showAlert(typeAlert: .increment, messageData: (message: errorModel.description ?? "", strAppend: strAppend), homeData: homeData, value: value)
+                    let strAppend = "\"\(counter.title)\"\("counterTo".localized)\(value)"
+                    sweak.view?.showAlert(typeAlert: .increment, messageData: (message: errorModel.description ?? "", strAppend: strAppend), counter: counter, value: value)
                     print("ERROR: \(errorModel.description ?? "")")
                 default:
                     break
@@ -356,9 +362,9 @@ extension HomeViewPresenter{
         }
     }
     
-    func decrementCounter(homeData: CounterModel, value: Int){
+    func decrementCounter(counter: CounterModel, value: Int){
         self.view?.startLoading()
-        interactorCounter.decrementCounter(counterId: homeData.id) { [weak self](result) in
+        interactorCounter.decrementCounter(counterId: counter.id) { [weak self](result) in
             guard let sweak = self else {return}
             sweak.view?.finishLoading()
             switch result{
@@ -366,7 +372,6 @@ extension HomeViewPresenter{
                 sweak.saveListCounters(counters: data)
                 sweak.homeData = data
                 sweak.view?.reloadData()
-                break
             case .failure(let error):
                 print("\(error)")
                 guard let errorModel =  error as? ErrorModel else {
@@ -375,8 +380,8 @@ extension HomeViewPresenter{
                 }
                 switch errorModel.type {
                 case .networkError,.custom,.unknownError,.parseModel:
-                    let strAppend = "\"\(homeData.title)\"\("counterTo".localized)\(value)"
-                    sweak.view?.showAlert(typeAlert: .decrement, messageData: (message: errorModel.description ?? "", strAppend: strAppend), homeData: homeData, value: value)
+                    let strAppend = "\"\(counter.title)\"\("counterTo".localized)\(value)"
+                    sweak.view?.showAlert(typeAlert: .decrement, messageData: (message: errorModel.description ?? "", strAppend: strAppend), counter: counter, value: value)
                     print("ERROR: \(errorModel.description ?? "")")
                 default:
                     break
@@ -387,12 +392,12 @@ extension HomeViewPresenter{
     
     
     //MARK: - Support Methods
-    func callRetryService(typeError: TypErrorCounter, homeData: CounterModel, value: Int) {
+    func callRetryService(typeError: TypErrorCounter, counter: CounterModel, value: Int) {
         switch typeError {
         case .increment:
-            self.incrementCounter(homeData: homeData, value: value)
+            self.incrementCounter(counter: counter, value: value)
         case .decrement:
-            self.decrementCounter(homeData: homeData, value: value)
+            self.decrementCounter(counter: counter, value: value)
         default:
             break
         }

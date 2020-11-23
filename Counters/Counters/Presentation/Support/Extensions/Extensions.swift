@@ -59,6 +59,20 @@ extension UIViewController{
         activityView = nil
     }
     
+    
+    func showCounterActionSheet(strDelete:String, action: ((UIAlertAction) -> Void)?){
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = .primaryOrangeColorApp
+        
+        actionSheet.addAction(UIAlertAction(title: strDelete, style: .destructive, handler: action))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        DispatchQueue.main.async {
+            self.present(actionSheet, animated: true, completion: nil)
+        }
+    }
+    
     func showCounterAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String), action: ((UIAlertAction) -> Void)?){
         let dismissTtitle:String = NSLocalizedString("dismissTitle", comment: "dismissTitle")
         let alert = UIAlertController(title: "\(typeAlert.getTitleAlert())\(messageData.strAppend)", message: messageData.message, preferredStyle: .alert)

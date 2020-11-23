@@ -10,7 +10,7 @@ import UIKit
 protocol HomeViewControllerProtocol:class, ViewProtocol{
     func reloadData()
     func reloadDataFilter()
-    func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),homeData: CounterModel, value: Int)
+    func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),counter: CounterModel, value: Int)
     func enableEditCounter(isEnable: Bool)
     func editCancell()
 }
@@ -70,7 +70,12 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func trashTapped(){
-        presenter.coolDispatchFunctionDelete()
+        
+        let strMessage = "\("Delete".localized) \(presenter.getCountSelected()) counter"
+        showCounterActionSheet(strDelete: strMessage, action: { actionSheetAlert in
+            self.presenter.coolDispatchFunctionDelete()
+        })
+//        presenter.coolDispatchFunctionDelete()
         print("Trash")
     }
     
@@ -225,11 +230,6 @@ extension HomeViewController{
     }
     
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-    }
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectDeselectCell(tableView: tableView, indexPath: indexPath)
         print("select")
@@ -275,9 +275,9 @@ extension HomeViewController: HomeViewControllerProtocol{
         navigationItem.leftBarButtonItem?.isEnabled = isEnable
     }
     
-    func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),homeData: CounterModel, value: Int){
-        self.showCounterAlert(typeAlert: typeAlert, messageData: messageData, action: { actionTest in
-            self.presenter.callRetryService(typeError: typeAlert,homeData: homeData, value: value)
+    func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String),counter: CounterModel, value: Int){
+        self.showCounterAlert(typeAlert: typeAlert, messageData: messageData, action: { actionAlert in
+            self.presenter.callRetryService(typeError: typeAlert,counter: counter, value: value)
         })
     }
     
@@ -288,6 +288,7 @@ extension HomeViewController: HomeViewControllerProtocol{
     }
     
     func reloadData(){
+        presenter.removeAllSelected()
         self.tableView.reloadData()
     }
     
