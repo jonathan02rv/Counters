@@ -37,6 +37,11 @@
 		9A22B95E2566AFD90024E81A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B95D2566AFD80024E81A /* ColorPalette.swift */; };
 		9A22B9672566B33E0024E81A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B9662566B33D0024E81A /* Utils.swift */; };
 		9A22B96C2566B4BF0024E81A /* FontsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A22B96B2566B4BF0024E81A /* FontsApp.swift */; };
+		9A308D0F256BE8A100036835 /* ExampleCounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D0E256BE8A100036835 /* ExampleCounterController.swift */; };
+		9A308D17256BE8C300036835 /* ExampleCounterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D16256BE8C200036835 /* ExampleCounterConfigurator.swift */; };
+		9A308D24256BE91900036835 /* ExampleCounterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D23256BE91900036835 /* ExampleCounterPresenter.swift */; };
+		9A308D29256BEA3800036835 /* ExampleCounterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A308D28256BEA3800036835 /* ExampleCounterRouter.swift */; };
+		9A308D2E256BEB8300036835 /* ExampleCounter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A308D2D256BEB8300036835 /* ExampleCounter.storyboard */; };
 		9A53FEA425671A98000E4346 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A53FEA325671A98000E4346 /* Extensions.swift */; };
 		9A53FEC2256728FA000E4346 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A53FEC1256728FA000E4346 /* SFProDisplay-Regular.ttf */; };
 		9A53FEC725672907000E4346 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A53FEC625672907000E4346 /* SFProDisplay-Bold.ttf */; };
@@ -129,6 +134,11 @@
 		9A22B95D2566AFD80024E81A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		9A22B9662566B33D0024E81A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		9A22B96B2566B4BF0024E81A /* FontsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsApp.swift; sourceTree = "<group>"; };
+		9A308D0E256BE8A100036835 /* ExampleCounterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCounterController.swift; sourceTree = "<group>"; };
+		9A308D16256BE8C200036835 /* ExampleCounterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCounterConfigurator.swift; sourceTree = "<group>"; };
+		9A308D23256BE91900036835 /* ExampleCounterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCounterPresenter.swift; sourceTree = "<group>"; };
+		9A308D28256BEA3800036835 /* ExampleCounterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCounterRouter.swift; sourceTree = "<group>"; };
+		9A308D2D256BEB8300036835 /* ExampleCounter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExampleCounter.storyboard; sourceTree = "<group>"; };
 		9A53FEA325671A98000E4346 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9A53FEC1256728FA000E4346 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		9A53FEC625672907000E4346 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
@@ -305,6 +315,9 @@
 		9A22B8C12565BF170024E81A /* ExampleCounter */ = {
 			isa = PBXGroup;
 			children = (
+				9A308D0B256BE86700036835 /* Router */,
+				9A308D0A256BE86000036835 /* Presenter */,
+				9A308D09256BE85300036835 /* View */,
 			);
 			path = ExampleCounter;
 			sourceTree = "<group>";
@@ -491,6 +504,7 @@
 				9A22B88C2564FC2E0024E81A /* Main.storyboard */,
 				9AB932A225677BCE0080FB6F /* Home.storyboard */,
 				9A60D9DC256AFCB000C9272C /* CreateCounter.storyboard */,
+				9A308D2D256BEB8300036835 /* ExampleCounter.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -530,6 +544,47 @@
 				9A60D96225695EA900C9272C /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		9A308D09256BE85300036835 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A308D0D256BE87A00036835 /* Configurator */,
+				9A308D0C256BE87200036835 /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9A308D0A256BE86000036835 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9A308D23256BE91900036835 /* ExampleCounterPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9A308D0B256BE86700036835 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9A308D28256BEA3800036835 /* ExampleCounterRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9A308D0C256BE87200036835 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A308D0E256BE8A100036835 /* ExampleCounterController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9A308D0D256BE87A00036835 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				9A308D16256BE8C200036835 /* ExampleCounterConfigurator.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 		9A53FEA225671A86000E4346 /* Extensions */ = {
@@ -901,6 +956,7 @@
 				9AA5D9082568DAFE00A6D067 /* CounterTableViewCell.xib in Resources */,
 				9A53FEC725672907000E4346 /* SFProDisplay-Bold.ttf in Resources */,
 				9A89A3AC25675C7C00B7A05D /* WelcomeTableViewCell.xib in Resources */,
+				9A308D2E256BEB8300036835 /* ExampleCounter.storyboard in Resources */,
 				9A22B88E2564FC2E0024E81A /* Main.storyboard in Resources */,
 				9A60D9DD256AFCB000C9272C /* CreateCounter.storyboard in Resources */,
 				9A60D9A7256AD73300C9272C /* MessageHomeTableViewCell.xib in Resources */,
@@ -932,6 +988,7 @@
 				9A22B9262565EA710024E81A /* ErrorModel.swift in Sources */,
 				9AB932CF256787720080FB6F /* HomeViewConfigurator.swift in Sources */,
 				9A22B8E22565C2E80024E81A /* RequestCounter.swift in Sources */,
+				9A308D24256BE91900036835 /* ExampleCounterPresenter.swift in Sources */,
 				9A22B8912564FC2E0024E81A /* Counters.xcdatamodeld in Sources */,
 				9AB932BF25677D370080FB6F /* HomeViewController.swift in Sources */,
 				9A60D9AD256AD91200C9272C /* HomeViewData.swift in Sources */,
@@ -939,6 +996,7 @@
 				9A22B9452565F49E0024E81A /* CounterInteractor.swift in Sources */,
 				9A60D9CB256AFB4600C9272C /* CreateCounterConfigurator.swift in Sources */,
 				9A22B96C2566B4BF0024E81A /* FontsApp.swift in Sources */,
+				9A308D17256BE8C300036835 /* ExampleCounterConfigurator.swift in Sources */,
 				9A53FF0025674D8A000E4346 /* WelcomeCounterConfigurator.swift in Sources */,
 				9A60DA06256B466600C9272C /* StorageDataInteractor.swift in Sources */,
 				9A22B8F02565C8390024E81A /* TimberjackHelper.swift in Sources */,
@@ -947,6 +1005,7 @@
 				9A22B90A2565CE590024E81A /* CounterModel.swift in Sources */,
 				9A53FEF825674CD3000E4346 /* WelcomeCounterRouter.swift in Sources */,
 				9A22B8892564FC2E0024E81A /* SceneDelegate.swift in Sources */,
+				9A308D0F256BE8A100036835 /* ExampleCounterController.swift in Sources */,
 				9A60D9C4256AFAD600C9272C /* CreateCounterViewController.swift in Sources */,
 				9A22B9032565CDBD0024E81A /* CounterEntity.swift in Sources */,
 				9A22B8F62565CADC0024E81A /* Rechability.swift in Sources */,
@@ -980,6 +1039,7 @@
 				9A22B95E2566AFD90024E81A /* ColorPalette.swift in Sources */,
 				9A22B9672566B33E0024E81A /* Utils.swift in Sources */,
 				9A60D9E2256B24DB00C9272C /* DesignableTextField.swift in Sources */,
+				9A308D29256BEA3800036835 /* ExampleCounterRouter.swift in Sources */,
 				9A89A3BC25675FF800B7A05D /* ViewData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
