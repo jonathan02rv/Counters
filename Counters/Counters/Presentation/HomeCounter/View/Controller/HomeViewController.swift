@@ -77,7 +77,6 @@ class HomeViewController: UITableViewController {
         showCounterActionSheet(strDelete: strMessage, action: { actionSheetAlert in
             self.presenter.coolDispatchFunctionDelete()
         })
-//        presenter.coolDispatchFunctionDelete()
         print("Trash")
     }
     
@@ -233,17 +232,20 @@ extension HomeViewController{
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let _ = tableView.cellForRow(at: indexPath) as? CounterTableViewCell else{return}
         self.selectDeselectCell(tableView: tableView, indexPath: indexPath)
         print("select")
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let _ = tableView.cellForRow(at: indexPath) as? CounterTableViewCell else{return}
         self.selectDeselectCell(tableView: tableView, indexPath: indexPath)
         print("DESELECT")
     }
     
     
     private func selectDeselectCell(tableView: UITableView, indexPath: IndexPath){
+        guard let _ = tableView.cellForRow(at: indexPath) as? CounterTableViewCell else{return}
         presenter.removeAllSelected()
         if let indexs = tableView.indexPathsForSelectedRows{
             presenter.appendSelect(indexPaths:indexs)
