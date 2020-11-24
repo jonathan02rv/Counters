@@ -31,6 +31,7 @@ extension CreateCounterPresenter{
     
     func saveListCounters(counters: [CounterModel]){
         interactorStorageData.saveListCounters(counters: counters)
+        view?.refreshCounterFromCreateView()
     }
 
 }

@@ -23,7 +23,8 @@ class HomeViewRouter: HomeViewRouterProtocol{
 
 extension HomeViewRouter{
     func routeToCreateCounter(){
-        guard let createCounterView = storyboard.instantiateViewController(withIdentifier: "createCounterViewController") as? CreateCounterViewController, let view = currentView else { return }        
+        guard let createCounterView = storyboard.instantiateViewController(withIdentifier: "createCounterViewController") as? CreateCounterViewController, let view = currentView else { return }
+        createCounterView.delegate = currentView
         view.navigationController?.pushViewController(createCounterView, animated: true)
     }
 }

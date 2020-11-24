@@ -8,6 +8,7 @@
 import Foundation
 
 protocol HomeViewPresenterProtocol{
+    //MARK: - Loal Cell Methods
     func loadData()
     func getNumberOfRowData()->Int
     func getItemData(row:Int)->CounterModel
@@ -23,10 +24,14 @@ protocol HomeViewPresenterProtocol{
     func callRetryService(typeError: TypErrorCounter, counter: CounterModel, value: Int)
     func goToCreateCounter()
     
-    
+    //MARK: - Cell Type Error Methods
     func getNumberOfRowErrorData()->Int
+    func setEmptyErrorHome()
     func hasErrorHome()->Bool
     func getMessageDataCell(row:Int)->ErrorHomeViewData
+    
+    //MARK: - Protocol CoreData Method
+    func getAllStorageCounters()
     
     
     //MARK: - Delete Methods

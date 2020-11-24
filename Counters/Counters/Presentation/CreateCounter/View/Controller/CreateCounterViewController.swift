@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol CreateCounterViewControllerDelegate{
+    func refreshCounterFromCreateView()
+}
+
 protocol CreateCounterViewControllerProtocol:class,ViewProtocol{
     func showAlert(typeAlert: TypErrorCounter, messageData: (message:String,strAppend:String))
     func clearInputText()
+    func refreshCounterFromCreateView()
 }
 
 class CreateCounterViewController: UIViewController {
@@ -19,6 +24,8 @@ class CreateCounterViewController: UIViewController {
     
     var presenter: CreateCounterPresenterProtocol!
     let configurator = CreateCounterConfigurator()
+    var delegate: CreateCounterViewControllerDelegate?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +95,10 @@ class CreateCounterViewController: UIViewController {
 }
 
 extension CreateCounterViewController: CreateCounterViewControllerProtocol{
+    
+    func refreshCounterFromCreateView(){
+        delegate?.refreshCounterFromCreateView()
+    }
     
     func clearInputText(){
         self.txtCounterTitle.text = ""
