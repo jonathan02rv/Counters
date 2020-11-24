@@ -342,6 +342,7 @@ extension HomeViewPresenter{
                 sweak.saveListCounters(counters: data)
                 sweak.homeData = data
                 sweak.view?.reloadData()
+                sweak.updateDataFilter(counter: counter)
             case .failure(let error):
                 print("\(error)")
                 guard let errorModel =  error as? ErrorModel else {
@@ -360,6 +361,16 @@ extension HomeViewPresenter{
         }
     }
     
+    func updateDataFilter(counter: CounterModel){
+        guard let counterData = homeData.first(where: {$0.id == counter.id}) else{return}
+        for index in 0..<filterData.count{
+            if filterData[index].id == counter.id{
+                filterData[index] = counterData
+            }
+        }
+        view?.reloadDataFilter()
+    }
+    
     func decrementCounter(counter: CounterModel, value: Int){
         self.view?.startLoading()
         interactorCounter.decrementCounter(counterId: counter.id) { [weak self](result) in
@@ -370,6 +381,7 @@ extension HomeViewPresenter{
                 sweak.saveListCounters(counters: data)
                 sweak.homeData = data
                 sweak.view?.reloadData()
+                sweak.updateDataFilter(counter: counter)
             case .failure(let error):
                 print("\(error)")
                 guard let errorModel =  error as? ErrorModel else {
