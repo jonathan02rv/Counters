@@ -224,48 +224,25 @@ extension HomeViewPresenter{
                     guard let sweak = self else{return}
                     switch result{
                     case .success(let data):
-                        
-                        if index == (sweak.selectData.count - 1) {
-                            DispatchQueue.main.async {
-                                sweak.view?.finishLoading()
-                                sweak.saveListCounters(counters: data)
-                                sweak.homeData = data
-                                if data.count == 0{
-                                    sweak.setErrorHomeData(tymeMessage: .emptyCounters)
-                                }
-                                sweak.view?.reloadData()
-                            }
-                        }
-                        
-                        
+                        sweak.homeData = data
+                        print("SUCCESS:\(data)")
                     case .failure(let error):
-                        
-                        if index == (sweak.selectData.count - 1){
-                            DispatchQueue.main.async{
-                                sweak.view?.finishLoading()
-                                sweak.getAllStorageCounters()
-                                if sweak.homeData.count == 0{
-                                    sweak.setErrorHomeData(tymeMessage: .loadCountersError)
-                                }
-                                guard let errorModel =  error as? ErrorModel else {
-                                    print("ERROR: \(error.localizedDescription)")
-                                    return
-                                }
-                                switch errorModel.type {
-                                case .networkError,.custom,.unknownError,.parseModel:
-                                    let strAppend = "selected"
-                                    sweak.view?.showAlert(typeAlert: .delete, messageData: (message: errorModel.description ?? "", strAppend: strAppend), counter: sweak.selectData[index], value: sweak.selectData[index].count)
-                                    print("ERROR: \(errorModel.description ?? "")")
-                                default:
-                                    print(error)
-                                }
-                                sweak.view?.reloadData()
-                            }
-                        }
+                        print("ERROR:\(error)")
                     }
+                    group.leave()
                 }
             }
-            group.wait()
+            
+            
+            group.wait();print("FINISH ALL TASK")
+            DispatchQueue.main.async {
+                self.view?.finishLoading()
+                self.saveListCounters(counters: self.homeData)
+                if self.homeData.count == 0{
+                    self.setErrorHomeData(tymeMessage: .emptyCounters)
+                }
+                self.view?.reloadData()
+            }
         }
         radQueue.addOperation(operation)
     }
@@ -285,9 +262,6 @@ extension HomeViewPresenter{
                 sweak.view?.reloadData()
             case .failure(let error):
                 sweak.getAllStorageCounters()
-                if sweak.homeData.count == 0{
-                    sweak.setErrorHomeData(tymeMessage: .loadCountersError)
-                }
                 guard let errorModel =  error as? ErrorModel else {
                     print("ERROR: \(error.localizedDescription)")
                     return
@@ -323,19 +297,22 @@ extension HomeViewPresenter{
                 sweak.view?.reloadData()
             case .failure(let error):
                 sweak.getAllStorageCounters()
-                if sweak.homeData.count == 0{
-                    sweak.setErrorHomeData(tymeMessage: .loadCountersError)
-                }
-                print("\(error)")
                 guard let errorModel =  error as? ErrorModel else {
                     print("ERROR: \(error.localizedDescription)")
                     return
                 }
                 switch errorModel.type {
-                case .networkError,.custom,.unknownError,.parseModel:
+                case .networkError:
+                    if sweak.homeData.count == 0{
+                        sweak.setErrorHomeData(tymeMessage: .loadCountersError, "networkConnectionError")
+                    }
+                case .custom,.unknownError,.parseModel:
                     print("ERROR: \(errorModel.description ?? "")")
+                    if sweak.homeData.count == 0{
+                        sweak.setErrorHomeData(tymeMessage: .loadCountersError, "defaultError")
+                    }
                 default:
-                    break
+                    print("\(error)")
                 }
                 sweak.view?.reloadData()
             }
@@ -413,15 +390,15 @@ extension HomeViewPresenter{
         }
     }
     
-    func setErrorHomeData(tymeMessage: CustomMessageType){
+    func setErrorHomeData(tymeMessage: CustomMessageType, _ message: String = "NoCountersYetMessage"){
         self.view?.enableEditCounter(isEnable: false)
         switch tymeMessage {
         case .emptyCounters:
             self.view?.editCancell()
-            let errorData = ErrorHomeViewData(title: "NoCountersYet".localized, description: "NoCountersYetMessage".localized, titleButton: "CreateAccountTitleBtn".localized, typeMessage: tymeMessage)
+            let errorData = ErrorHomeViewData(title: "NoCountersYet".localized, description: message.localized, titleButton: "CreateAccountTitleBtn".localized, typeMessage: tymeMessage)
             self.errorData.append(errorData)
         case .loadCountersError:
-            let errorData = ErrorHomeViewData(title: "ErrorLoadCounters".localized, description: "ErrorLoadCountersMessage".localized, titleButton: "retry".localized, typeMessage: tymeMessage)
+            let errorData = ErrorHomeViewData(title: "ErrorLoadCounters".localized, description: message.localized, titleButton: "retry".localized, typeMessage: tymeMessage)
             self.errorData.append(errorData)
         }
     }
