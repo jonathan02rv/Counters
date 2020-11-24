@@ -109,6 +109,7 @@ extension CreateCounterViewController: CreateCounterViewControllerProtocol{
 extension CreateCounterViewController: ExampleCounterControllerDelegate{
     func fillCounterField(title: String) {
         self.txtCounterTitle.text = title
+        enableSaveCounter(isEnable: true)
     }
 }
 
