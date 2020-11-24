@@ -1,0 +1,54 @@
+/*
+  Localizable.strings
+  Contadores
+
+  Creado por Jhonatahan el 21/11/20.
+  
+*/
+//MARCA: - MENSAJES DE ALERTA
+
+"createErrorAlertTitle" = "No se pudo crear el contador";
+"updateErrorAlertTitle" = "No se pudo actualizar";
+"deleteErrorAlertTitle" = "No se pudo borrar el contador";
+"counterTo"=" contrarrestar";
+
+"dismissTitle" = "Descartar";
+"retry" = "Reintentar";
+
+"NoCountersYet" = "Aún no hay contadores";
+"NoCountersYetMessage" = "Cuando comencé a contar mis bendiciones, toda mi vida cambió.";
+"CreateAccountTitleBtn" = "Crear un contador";
+"CreateCounterViewTitle" = "Crear un contador";
+
+"ErrorLoadCounters" = "No se pudieron cargar los contadores";
+"ExampleMessageSubtitle" = "Seleccione un ejemplo para agregarlo a sus contadores";
+
+//MARCA: - Crear contador
+"CreateBackText" = "Crear";
+"ExampleTextCrateCounter" = "Asígnele un nombre. ¿Bloque creativo? Ver ";
+"ExamplesTextTap" = "ejemplos.";
+"ExampleTitle" = "Ejemplos";
+"PlaceHolderCrateCounter" = "Tazas de café";
+//MARCA: - Borrar contador
+"Editar" = "Editar";
+"Hecho" = "Hecho";
+"SelectAll" = "Seleccionar todo";
+"DeselectAll" = "Deseleccionar todo";
+"Delete" = "Eliminar";
+//MARCA: - ERROS
+"defaultError" = "Algo salió mal, no pudimos conectarnos.";
+"networkConnectionError" = "La conexión a Internet parece estar desconectada.";
+
+//MARCA: - BIENVENIDA
+"WelcomeTitle" = "Bienvenido a";
+"CounterTitle" = "Contadores";
+"WelcomeParagraph" = "Una aplicación de ejemplo que se sincroniza con un servidor Node.js que se ejecuta en su Mac";
+
+"WelcomItemTitle1" = "Agregue casi cualquier cosa";
+"WelcomItemDescription1" = "Capture tazas de café con leche, frapuccinos o cualquier otra cosa que se pueda contar.";
+
+"WelcomItemTitle2" = "Cuente solo o con cualquiera";
+"WelcomItemDescription2" = "Otros pueden ver o realizar cambios. No hay API de autenticación";
+
+"WelcomItemTitle3" = "Cuente sus pensamientos";
+"WelcomItemDescription3" = "Las posibilidades son literalmente infinitas";
