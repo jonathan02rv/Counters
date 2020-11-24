@@ -6,6 +6,7 @@
   
 */
 //MARK: - ALERT MESSAGES
+
 "createErrorAlertTitle" = "Couldn’t create the counter";
 "updateErrorAlertTitle" = "Couldn’t update the ";
 "deleteErrorAlertTitle" = "Couldn’t delete the counter ";
@@ -37,5 +38,19 @@
 //MARK: - ERROS
 "defaultError" = "Something went wrong, we couldn't connect.";
 "networkConnectionError" = "The Internet connection appears to be offline.";
+
+//MARK: - WELCOM
+"WelcomeTitle" = "Welcome to";
+"CounterTitle" = "Counters";
+"WelcomeParagraph" = "An example app that syncs to a Node.js server running on your Mac.";
+
+"WelcomItemTitle1" = "Add almost anything";
+"WelcomItemDescription1" = "Capture cups of lattes, frapuccinos, or anything else that can be counted.";
+
+"WelcomItemTitle2" = "Count to self, or with anyone";
+"WelcomItemDescription2" = "Others can view or make changes. There’s no authentication API.";
+
+"WelcomItemTitle3" = "Count your thoughts";
+"WelcomItemDescription3" = "Possibilities are literally endless.";
 
 

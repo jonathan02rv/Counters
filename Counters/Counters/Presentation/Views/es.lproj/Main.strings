@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Welcome to"; ObjectID = "J7F-XW-T0G"; */
+"J7F-XW-T0G.text" = "Welcome to";
+
+/* Class = "UILabel"; text = "Counters"; ObjectID = "Qkp-Qg-9TN"; */
+"Qkp-Qg-9TN.text" = "Counters";
+
+/* Class = "UIButton"; normalTitle = "Continuar"; ObjectID = "oDI-lD-Dog"; */
+"oDI-lD-Dog.normalTitle" = "Continuar";
+
+/* Class = "UILabel"; text = "An example app that syncs to a Node.js server running on your Mac."; ObjectID = "oMN-jb-52Q"; */
+"oMN-jb-52Q.text" = "An example app that syncs to a Node.js server running on your Mac.";

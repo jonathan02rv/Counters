@@ -41,6 +41,10 @@ class WelcomeCounterController: UIViewController {
     }
     
     private func setStyleView(){
+        lblTitle.text = "WelcomeTitle".localized
+        lblSubTitle.text = "CounterTitle".localized
+        lblPresentation.text = "WelcomeParagraph".localized
+        
         lblTitle.setCustomFont(size: .s33, color: .primaryOrangeColorApp, customFont: .bold)
         lblSubTitle.setCustomFont(size: .s33, color: ColorsApp.primaryBlackColorApp, customFont: .bold)
         btnNext.type = .primary

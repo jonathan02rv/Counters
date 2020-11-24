@@ -34,9 +34,9 @@ extension WelcomeCounterPresenter: WelcomeCounterPresenterProtocol{
     }
     
     func loadData(){
-        let item1 = WelcomeDataModel(iconContainer: "iconRedRectangle", iconInclude: "iconNumber", title: "Add almost anything", description: "Capture cups of lattes, frapuccinos, or anything else that can be counted.")
-        let item2 = WelcomeDataModel(iconContainer: "iconYellowRectangle", iconInclude: "iconPersons", title: "Count to self, or with anyone", description: "Others can view or make changes. There’s no authentication API.")
-        let item3 = WelcomeDataModel(iconContainer: "iconGreenRectangle", iconInclude: "iconIdea", title: "Count your thoughts", description: "Possibilities are literally endless.")
+        let item1 = WelcomeDataModel(iconContainer: "iconRedRectangle", iconInclude: "iconNumber", title: "WelcomItemTitle1".localized, description: "WelcomItemDescription1".localized)
+        let item2 = WelcomeDataModel(iconContainer: "iconYellowRectangle", iconInclude: "iconPersons", title: "WelcomItemTitle2".localized, description: "WelcomItemDescription2".localized)
+        let item3 = WelcomeDataModel(iconContainer: "iconGreenRectangle", iconInclude: "iconIdea", title: "WelcomItemTitle3".localized, description: "WelcomItemDescription3".localized)
         welcomeData.append(item1)
         welcomeData.append(item2)
         welcomeData.append(item3)
