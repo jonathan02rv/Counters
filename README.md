@@ -1,7 +1,5 @@
 # Counters
 
-
-
 ## The Server
 
 Run the mock server (included in this repo) by executing:
