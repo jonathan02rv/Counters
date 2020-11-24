@@ -66,14 +66,6 @@ class HomeViewPresenter{
 //MARK: - Core Data Methods
 extension HomeViewPresenter{
     
-    func getDataForShare()->[String]{
-        var dataShare = [String]()
-        for item in selectData{
-            dataShare.append("\(item.count)x\(item.title)")
-        }
-        return dataShare
-    }
-    
     func saveListCounters(counters: [CounterModel]){
         interactorStorageData.saveListCounters(counters: counters)
     }
@@ -82,14 +74,18 @@ extension HomeViewPresenter{
         self.homeData = interactorStorageData.getAllStorageCounters()
     }
     
-    func updateStorageCounter(counter: CounterModel){
-        interactorStorageData.updateStorageCounter(counter: counter)
-    }
-    
 }
 
 //MARK: - Delete Methods
 extension HomeViewPresenter{
+    
+    func getDataForShare()->[String]{
+        var dataShare = [String]()
+        for item in selectData{
+            dataShare.append("\(item.count)x\(item.title)")
+        }
+        return dataShare
+    }
     
     func getCountSelected()->Int{
         return selectData.count
