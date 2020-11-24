@@ -44,6 +44,7 @@ class CreateCounterViewController: UIViewController {
 
     private func setupLabels(){
         txtCounterTitle.type = .primary
+        txtCounterTitle.becomeFirstResponder()
         txtCounterTitle.stylePlaceholder(txtPlaceholder: "PlaceHolderCrateCounter".localized)
         lblExampleTitle.setCustomFont(size: .s17, color: .thirdGraceColorApp, customFont: .regular)
         
@@ -109,6 +110,7 @@ extension CreateCounterViewController: CreateCounterViewControllerProtocol{
 extension CreateCounterViewController: ExampleCounterControllerDelegate{
     func fillCounterField(title: String) {
         self.txtCounterTitle.text = title
+        enableSaveCounter(isEnable: true)
     }
 }
 
