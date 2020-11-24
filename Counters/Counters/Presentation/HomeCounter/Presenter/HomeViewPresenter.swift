@@ -202,6 +202,7 @@ extension HomeViewPresenter{
         guard selectData.count > 0 else{return}
         self.view?.startLoading()
         let radQueue = OperationQueue()
+        var arrayOperations = [BlockOperation]()
         setEmptyErrorHome()
         
         guard selectData.count > 1 else{
@@ -211,10 +212,10 @@ extension HomeViewPresenter{
             return
         }
         
-        let operation = BlockOperation{
-            let group = DispatchGroup()
-            
-            for index in 0..<self.selectData.count{
+        
+        for index in 0..<self.selectData.count{
+            let operation = BlockOperation{
+                let group = DispatchGroup()
                 group.enter()
                 self.interactorCounter.deteleCounter(counterId: self.selectData[index].id) { [weak self](result) in
                     guard let sweak = self else{return}
@@ -227,10 +228,12 @@ extension HomeViewPresenter{
                     }
                     group.leave()
                 }
+                group.wait()
             }
-            
-            
-            group.wait();print("FINISH ALL TASK")
+            arrayOperations.append(operation)
+        }
+        
+        let operationRefreshView = BlockOperation{
             DispatchQueue.main.async {
                 self.view?.finishLoading()
                 self.saveListCounters(counters: self.homeData)
@@ -240,7 +243,14 @@ extension HomeViewPresenter{
                 self.view?.reloadData()
             }
         }
-        radQueue.addOperation(operation)
+        arrayOperations.append(operationRefreshView)
+        
+        for index in 0..<arrayOperations.count{
+            if index > 0{
+                arrayOperations[index].addDependency(arrayOperations[index-1])
+            }
+            radQueue.addOperation(arrayOperations[index])
+        }
     }
     
     
