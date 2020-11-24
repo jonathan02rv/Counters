@@ -182,9 +182,13 @@ class HomeViewController: UITableViewController {
 }
 
 extension HomeViewController{
+
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        (tableView.cellForRow(at: indexPath) as? CounterTableViewCell)?.contentView.backgroundColor = .primaryGraceColorApp
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
         switch presenter.hasErrorHome() {
         case false:
             return presenter.getNumberOfRowData()
@@ -305,6 +309,16 @@ extension HomeViewController: HomeViewControllerProtocol{
         refreshControl?.endRefreshing()
         self.hideActivity()
     }
+}
+
+extension HomeViewController:CreateCounterViewControllerDelegate{
+    func refreshCounterFromCreateView() {
+        presenter.setEmptyErrorHome()
+        presenter.getAllStorageCounters()
+        self.reloadData()
+    }
+    
+    
 }
 
 extension HomeViewController: CustomMessageViewDelegate{

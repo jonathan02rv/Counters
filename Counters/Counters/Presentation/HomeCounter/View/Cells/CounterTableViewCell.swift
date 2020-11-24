@@ -70,7 +70,6 @@ class CounterTableViewCell: UITableViewCell {
     }
     @IBAction func stepper(_ sender: UIStepper) {
         presenter.setValueCount(value: sender.value, id: self.idCounter)
-        updateRefreshCounter()
     }
     
     
