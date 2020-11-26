@@ -316,6 +316,7 @@ extension HomeViewController:CreateCounterViewControllerDelegate{
         presenter.setEmptyErrorHome()
         presenter.getAllStorageCounters()
         self.reloadData()
+        navigationItem.leftBarButtonItem?.isEnabled = true
     }
     
     
